@@ -19,23 +19,51 @@ class LLMWrapper:
 
 class ChatGPTWrapper(LLMWrapper):
     def __init__(self, model_id):
+        if not OPENAI_API_KEY:
+            raise EnvironmentError(
+                "OPENAI_API_KEY is not set. Export it before running GPT-based pipelines."
+            )
         self.api_key = OPENAI_API_KEY
         self.model_id = model_id
     
     def __call__(self, messages) -> str:
         client = openai.OpenAI(api_key=self.api_key)
-        stream = client.chat.completions.create(
-            model=self.model_id,
-            messages=messages,
-            stream=True,
-            top_p=0.5,
-        )
-        content = ""
-        for chunk in stream:
-            if chunk.choices[0].delta.content is not None:
-                # print(chunk.choices[0].delta.content, end="", flush=True)
-                content += chunk.choices[0].delta.content
-        return content
+        max_attempts = 3
+        backoff_seconds = 2
+
+        for attempt in range(1, max_attempts + 1):
+            try:
+                stream = client.chat.completions.create(
+                    model=self.model_id,
+                    messages=messages,
+                    stream=True,
+                    top_p=0.5,
+                )
+                content = ""
+                for chunk in stream:
+                    if chunk.choices[0].delta.content is not None:
+                        content += chunk.choices[0].delta.content
+                return content
+            except openai.RateLimitError as exc:
+                error_body = getattr(exc, "body", {}) or {}
+                error_obj = error_body.get("error", {}) if isinstance(error_body, dict) else {}
+                error_code = error_obj.get("code")
+                if error_code == "insufficient_quota":
+                    raise RuntimeError(
+                        "OpenAI API request failed: insufficient quota for this API key. "
+                        "Add billing/credits or switch to a non-OpenAI model id in --llm."
+                    ) from exc
+
+                if attempt == max_attempts:
+                    raise RuntimeError(
+                        "OpenAI API request failed after retries due to rate limiting. "
+                        "Please wait and try again."
+                    ) from exc
+                time.sleep(backoff_seconds * attempt)
+            except Exception as exc:
+                raise RuntimeError(f"OpenAI API request failed: {exc}") from exc
+
+        raise RuntimeError("OpenAI API request failed after retries.")
     
 class HFWrapper(LLMWrapper):
     def __init__(self, model_id):

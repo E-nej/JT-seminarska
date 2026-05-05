@@ -17,7 +17,14 @@ import subprocess
 class VDict:
     def __init__(self, filename, initial_words: Optional[List]=None, create_new_dict=False):
         self.filename = filename
-        self.db = shelve.open(filename, flag='n' if create_new_dict else 'c', writeback=create_new_dict)
+        try:
+            self.db = shelve.open(filename, flag='n' if create_new_dict else 'c', writeback=create_new_dict)
+        except Exception as exc:
+            raise RuntimeError(
+                f"Failed to open dictionary cache '{filename}'. "
+                "If the cache is corrupted (for example a broken .db.db file), "
+                "rename or delete it and rerun to rebuild the dictionary cache."
+            ) from exc
         if initial_words is not None:
             for key, value in initial_words:
                 self.db[key] = value
@@ -354,7 +361,7 @@ class Arapaho_VDict(VDict):
     def real_match(self, key):
         fst_result = self.fst.analyze(key)
         if not (len(fst_result) == 1 and fst_result[0] == '???'):
-            stem = re.sub('[\[].*?[\]]', '', fst_result[0])
+            stem = re.sub(r'\[.*?\]', '', fst_result[0])
             key = stem
         if self.driver == None:
             service = Service(executable_path='./chromedriver')

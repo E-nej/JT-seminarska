@@ -109,7 +109,7 @@ def neutral_to_lexc(string: str) -> str:
     Converts big t (t) to T and adds an initial flag diacritic.
     """
     string = join_words(string)
-    if re.search('^[\$aeiou]', string):  # add apostrophe to initial vowel
+    if re.search(r'^[$aeiou]', string):  # add apostrophe to initial vowel
         string = "'" + string
     if re.search(r'\(t\)', string):  # add big t flag and replace (t)->T
         string = '@P.VAL.BIGT@' + re.sub(r'\(t\)', 'T', string)

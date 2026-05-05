@@ -101,7 +101,7 @@ class FomaReader():
         for w in warnings:
             print(w)
 
-        fst_info = re.findall("(\d+) states?, (\d+) arcs?, (\d+) paths?.", raw_foma)
+        fst_info = re.findall(r"(\d+) states?, (\d+) arcs?, (\d+) paths?\.", raw_foma)
         # needs testing
         if fst_info:
             self.states, self.arcs, self.paths = (int(n) for n in fst_info[-1])
@@ -130,7 +130,7 @@ class FomaReader():
         Saves location to the object if the file exists.
         Returns a boolean of whether a binary file is ultimately found.
         """
-        bin_text = re.findall("Writing to file (\S+).", foma_output)
+        bin_text = re.findall(r"Writing to file (\S+)\.", foma_output)
         if bin_text:
             bin_text = bin_text[-1]
             if os.path.exists(bin_text):

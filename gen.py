@@ -143,7 +143,11 @@ if __name__ == '__main__':
                     with open(f'{work_dir}/outputs/{copy_prompt}/history_{i}.json', 'r') as f:
                         history = json.load(f)[:2]
                 
-                res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter)
+                try:
+                    res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter)
+                except RuntimeError as exc:
+                    print(f"\nGeneration stopped at line {i}: {exc}")
+                    raise SystemExit(1)
                 with open(f'{output_dir}/output_{i}', 'w') as f:
                     f.write(res)
                 with open(f'{output_dir}/history_{i}.json', 'w') as f:
