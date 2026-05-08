@@ -7,3 +7,4 @@ spacy==3.7.6
 numpy==1.26.4
 transformers==4.44.2
 torch==2.4.0
+google-genai

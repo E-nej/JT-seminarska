@@ -33,6 +33,7 @@ def _load_local_env() -> None:
 _load_local_env()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 DICT_CLASSES = {
     "manchu-english": Manchu_VDict,
