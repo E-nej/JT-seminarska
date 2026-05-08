@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nnikan i niyalma\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "The Manchu phrase **\"nikan i niyalma\"** can be broken down as follows:\n\n*   **nikan**: This term historically refers to the Han Chinese people or the Chinese language.\n*   **i**: This is the genitive particle, functioning similarly to the English possessive \"'s\" or \"of\".\n*   **niyalma**: This means \"person\" or \"people\".\n\nWhen combined, the phrase translates to \"a person of the Han Chinese\" or, more simply, \"a Chinese person.\"\n\n### A Chinese person ###"
+  }
+]

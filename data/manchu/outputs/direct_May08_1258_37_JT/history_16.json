@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi daqi nikan i niyalma de bithe taqiha be dahame\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence \"bi daqi nikan i niyalma de bithe taqiha be dahame\" into English, we can break it down as follows:\n\n*   **bi**: I\n*   **daqi**: from the beginning / originally\n*   **nikan i niyalma**: Han Chinese person\n*   **de**: (dative/locative particle, indicating the agent or source here)\n*   **bithe**: book / writing / language\n*   **taqiha**: learned / studied\n*   **be**: (object marker)\n*   **dahame**: because / due to the fact that\n\nSyntactically, the sentence expresses that the speaker learned to read/write from a Chinese person.\n\n### Because I originally learned writing from a Chinese person ###"
+  }
+]
