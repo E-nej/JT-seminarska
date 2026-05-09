@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Here are some examples of manchu sentences and their corresponding english translations.\n\nManchu: julge i ming gurun i forgon de emu lolo seme gaxan bihe\nEnglish: Long ago, in the Ming dynasty, there was a village called Lolo\nManchu: Budai faksi be buda arabume werifi sargudai fiyanggo geren ahasi sabe gaime ahalji bahalji sade afabume aba saraki alin xurdeme abalaki sefi\nEnglish: Sergudai Fiyanggo left the cook preparing meal, and took all the servants with him and ordered Ahalji and Bahalji, \u201cLet\u2019s spread out the battue line around the mountain and hunt.\u201d\nManchu: giran be gaime jurarengge oyonggo\nEnglish: Now it is important to bring his corpse home\n    \nPlease help me translate the following sentence from manchu to english:\n\nbi inu gemun heqen i baru genembi\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "### I will now explain the translation process for the given Manchu sentence \"bi inu gemun heqen i baru genembi\" to English.\n\n- \"bi\" means \"I\" or \"me\"\n- \"inu\" can mean \"now\" or \"this time\"\n- \"gemun\" means \"to think\" or \"to consider\"\n- \"heqen\" means \"you\" (plural or formal)\n- \"i\" is a possessive marker\n- \"baru\" means \"road\" or \"path\"\n- \"genembi\" is a verb form that can mean \"to go\" or \"to travel\"\n\nPutting it all together, the sentence can be translated as:\n\n### I will now think about the path we will take ###"
+  }
+]
