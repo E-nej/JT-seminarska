@@ -23,7 +23,8 @@ parser.add_argument('--demo', type=str, default="", help='demo examples', requir
 parser.add_argument("--llm", type=str, default="", help="LLM model id", required=True)
 parser.add_argument("--start", type=int, default=0, help="Start from line")
 parser.add_argument("--copy_prompt", type=str, default="", help="the output directory to copy prompts from", required=False)
-
+parser.add_argument("--use-rag", action="store_true")
+parser.add_argument("--rag-k", type=int, default=3)
 
 
 def check_dirs(args):
@@ -58,6 +59,7 @@ def check_dirs(args):
         
     return output_dir
 
+
 def make_logs(src_lang, tgt_lang, pipeline_name, input_fn, dict_fn, output_dir, gloss_fn, grammar_fn, iter, demo_fn, llm, copy_prompt):
     config = {
         'src_lang': src_lang,
@@ -83,6 +85,7 @@ def make_logs(src_lang, tgt_lang, pipeline_name, input_fn, dict_fn, output_dir, 
     if os.path.exists(demo_fn):
         shutil.copy(demo_fn, f'{output_dir}/code_bak/{demo_fn.split("/")[-1]}')
 
+
 if __name__ == '__main__':
     args = parser.parse_args()
     work_dir = args.work_dir
@@ -96,7 +99,8 @@ if __name__ == '__main__':
     demo = args.demo
     llm = args.llm
     start = args.start
-    
+    use_rag = args.use_rag
+    rag_k = args.rag_k
     output_dir = check_dirs(args)
     
     if args.gloss_fn is None:
@@ -144,7 +148,7 @@ if __name__ == '__main__':
                         history = json.load(f)[:2]
                 
                 try:
-                    res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter)
+                    res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter, use_rag, rag_k)
                 except RuntimeError as exc:
                     print(f"\nGeneration stopped at line {i}: {exc}")
                     raise SystemExit(1)

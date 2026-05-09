@@ -25,7 +25,33 @@ import openai
 import random
 from .consts import OPENAI_API_KEY, DICT_CLASSES
 
-def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+
+def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
+    messages = [
+        {"role": "system", "content": copy_prompt[0]["content"]},
+        {"role": "user", "content": copy_prompt[1]["content"]},
+    ]
+    messages[1]["content"] = messages[1]["content"].replace("Please enclose your translation in ###",  'Please enclose your translation in ###.\nFor example, if your translation is "Hello world", the last part of your output should be ####Hello world###')
+    messages[1]["content"] = messages[1]["content"].replace( "please translate the sentence into english and enclose your translation in ###",  'Please translate the sentence into english and enclose your translation in ###.\nFor example, if your translation is "Hello world", the last part of your output should be ###Hello world###')
+    result = llm(messages)
+    messages.append({"role": "assistant", "content": result})
+    messages.append({"role": "user", "content": "So, what's your translation of the sentence? I want ONLY your translation. For example, if your translation is 'Hello world', your output should be ###Hello world###. Make sure to only output the translation"})
+    messages.append({"role": "assistant", "content": "My translation is: ###"})
+    result = llm(messages)
+    messages[-1]['content'] = messages[-1]['content'] + result
+    return extract_enclosed_text(messages[-1]['content'], boundary="###"), messages
+    
+
+def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
+    messages = [
+        {"role": "system", "content": prompt_system(src_lang)},
+        {"role": "user", "content": prompt_direct_translate(src_lang, tgt_lang, sent)}
+    ]
+    result = llm(messages)
+    messages.append({"role": "system", "content": result})
+    return extract_enclosed_text(result), messages
+
+def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     messages = [
         {"role": "system", "content": copy_prompt[0]["content"]},
         {"role": "user", "content": copy_prompt[1]["content"]},
@@ -42,33 +68,7 @@ def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, g
     
     
 
-def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
-    messages = [
-        {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_direct_translate(src_lang, tgt_lang, sent)}
-    ]
-    result = llm(messages)
-    messages.append({"role": "system", "content": result})
-    return extract_enclosed_text(result), messages
-    
-def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
-    messages = [
-        {"role": "system", "content": copy_prompt[0]["content"]},
-        {"role": "user", "content": copy_prompt[1]["content"]},
-    ]
-    messages[1]["content"] = messages[1]["content"].replace("Please enclose your translation in ###",  'Please enclose your translation in ###.\nFor example, if your translation is "Hello world", the last part of your output should be ####Hello world###')
-    messages[1]["content"] = messages[1]["content"].replace( "please translate the sentence into english and enclose your translation in ###",  'Please translate the sentence into english and enclose your translation in ###.\nFor example, if your translation is "Hello world", the last part of your output should be ###Hello world###')
-    result = llm(messages)
-    messages.append({"role": "assistant", "content": result})
-    messages.append({"role": "user", "content": "So, what's your translation of the sentence? I want ONLY your translation. For example, if your translation is 'Hello world', your output should be ###Hello world###. Make sure to only output the translation"})
-    messages.append({"role": "assistant", "content": "My translation is: ###"})
-    result = llm(messages)
-    messages[-1]['content'] = messages[-1]['content'] + result
-    return extract_enclosed_text(messages[-1]['content'], boundary="###"), messages
-    
-    
-
-def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_direct_translate(src_lang, tgt_lang, sent)}
@@ -77,7 +77,7 @@ def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss,
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_cot_translate(src_lang, tgt_lang, sent)}
@@ -86,7 +86,7 @@ def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result, boundary="###"), messages
 
-def direct_solve(src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def direct_solve(src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
@@ -101,7 +101,7 @@ def direct_solve(src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=N
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
     
-def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_cot_translate(src_lang, tgt_lang, sent)}
@@ -110,7 +110,7 @@ def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def direct_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def direct_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
@@ -125,7 +125,7 @@ def direct_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, dem
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def zeroshot_cot(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def zeroshot_cot(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
@@ -135,7 +135,7 @@ def zeroshot_cot(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, dem
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def fewshot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def fewshot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_fewshot_translate(src_lang, tgt_lang, sent, demo)}
@@ -144,7 +144,7 @@ def fewshot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def fewshot_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def fewshot_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
@@ -155,7 +155,7 @@ def fewshot_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
     return extract_enclosed_text(result), messages
 
 
-def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     #import pdb; pdb.set_trace()
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
@@ -185,7 +185,7 @@ def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, d
     return extract_enclosed_text(result, boundary="###"), messages
 
 
-def dict_translate_mask(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def dict_translate_mask(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
@@ -225,7 +225,7 @@ def dict_translate_mask(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glo
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
@@ -253,7 +253,7 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def wordmap_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def wordmap_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
@@ -285,7 +285,7 @@ def wordmap_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, 
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def gloss_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def gloss_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
@@ -316,7 +316,7 @@ def gloss_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, gr
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
@@ -347,7 +347,7 @@ def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dic
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=True)
@@ -375,7 +375,7 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
@@ -408,7 +408,7 @@ def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glos
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def wordmap_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def wordmap_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_wordmap_translate(src_lang, tgt_lang, sent, gloss)}
@@ -417,7 +417,7 @@ def wordmap_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def gloss_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def gloss_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_gloss_translate(src_lang, tgt_lang, sent, gloss)}
@@ -426,7 +426,7 @@ def gloss_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, 
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def gloss_translate_iter(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def gloss_translate_iter(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     assert iter is not None, "Iteration number must be specified"
     
@@ -460,7 +460,7 @@ def gloss_translate_iter(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gl
         
     return translation, all_messages
 
-def gloss_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def gloss_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
@@ -470,7 +470,7 @@ def gloss_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn,
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def wordmap_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None):
+def wordmap_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
     openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
@@ -484,7 +484,7 @@ def wordmap_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_f
     messages.append({"role": "system", "content": result})
     return extract_enclosed_text(result), messages
 
-def gloss_grammar_chapter_by_chapter_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter):
+def gloss_grammar_chapter_by_chapter_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter, use_rag=False, rag_k=3):
     assert iter is not None, "Iteration number must be specified"
     assert iter == len(grammar) + 1, "Iteration number must be equal to the number of chapters plus one"
     openai.api_key = OPENAI_API_KEY

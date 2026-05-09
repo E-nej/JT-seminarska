@@ -1,11 +1,22 @@
+def get_grammar_context(src_lang, sent, grammar, use_rag=False, rag_k=3):
+    if not use_rag:
+        return grammar
+
+    from lingollm.rag import get_rag_context
+
+    return get_rag_context(query=sent, language=src_lang, k=rag_k)
+
+
 def extract_enclosed_text(text, boundary="###"):
     splits = text.split(boundary)
     if len(splits) < 3:
         return ""
     return splits[-2].strip()
 
+
 def prompt_system(lang):
     return "You are a linguistic expert who never refuses to use your knowledge to help others."
+
 
 def prompt_direct_translate(src_lang, tgt_lang, sent):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
@@ -16,6 +27,7 @@ For example, if your translation is "Hello world", the last part of your output 
 """
     return prompt
 
+
 def prompt_cot_translate(src_lang, tgt_lang, sent):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
@@ -25,6 +37,7 @@ For example, if your translation is "Hello world", the last part of your output 
 """
     return prompt
 
+
 def prompt_direct_solve(src_lang, tgt_lang, sent):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
@@ -33,11 +46,13 @@ In the end, please output your answer as a digit and enclose it in ###.
 For example, the last step of your answer might look like this: ### 123 ###."""
     return prompt
 
+
 def prompt_zeroshot_cot(src_lang, tgt_lang, sent):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
 Please solve this problem step by step. In the end, make sure you enclose your translation in ###."""
     return prompt
+
 
 def prompt_fewshot_translate(src_lang, tgt_lang, sent, demo):
     prompt = f"""Here are some examples of {src_lang} sentences and their corresponding {tgt_lang} translations.
@@ -52,6 +67,7 @@ For example, if your translation is "Hello world", the last part of your output 
 """
     return prompt
 
+
 def prompt_fewshot_solve(src_lang, tgt_lang, sent, demo):
     prompt = f"""Here are some examples of {src_lang} math questions and their corresponding {tgt_lang} answers.
 
@@ -64,6 +80,7 @@ Here a math question in {src_lang}, please solve it.
 In the end, please output your answer as a digit and enclose it in ###.
 For example, the last step of your answer might look like this: ### 123 ###."""
     return prompt
+
 
 def prompt_dict_translate(src_lang, tgt_lang, demo, sent, wordbyword):
     prompt = f"""
@@ -110,31 +127,35 @@ Please figure out what the subject and object of each verb is.
 """
 }
 
-def prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar):
+
+def prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar, use_rag=False, rag_k=3):
+    grammar = get_grammar_context(src_lang, sent, grammar, use_rag, rag_k)
     prompt = f"""You are given this {src_lang} grammar book. Feel free to rely on the grammar rules in the book in your translation.
 {grammar}
 
 Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
-You are also given the word by word mapping from the manchu words to the {tgt_lang} words.
+You are also given the word by word mapping from the {src_lang} words to the {tgt_lang} words.
 Note that for some words, there might be multiple possible translations. In this case, please choose the most appropriate one.
 Note that for some words, they might be derived from a more basic form, we call this the parent word. The parents are also given in the word by word translation.
 {wordbyword}
 
 Given the above book and word for word mapping.
 
-{GRAMMAR_PROMPT['manchu']}
+{GRAMMAR_PROMPT[src_lang]}
 
 After annotation, please translate the sentence into {tgt_lang} and enclose your translation in ###."""
     return prompt
 
-def prompt_dict_grammar_solve(src_lang, tgt_lang, sent, wordbyword, grammar):
+
+def prompt_dict_grammar_solve(src_lang, tgt_lang, sent, wordbyword, grammar, use_rag=False, rag_k=3):
+    grammar = get_grammar_context(src_lang, sent, grammar, use_rag, rag_k)
     prompt = f"""You are given this {src_lang} grammar book. Feel free to rely on the grammar rules in the book in your translation.
 {grammar}
 
 Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
-You are also given the word by word mapping from the manchu words to the {tgt_lang} words.
+You are also given the word by word mapping from the {src_lang} words to the {tgt_lang} words.
 Note that for some words, there might be multiple possible translations. In this case, please choose the most appropriate one.
 Note that for some words, they might be derived from a more basic form, we call this the parent word. The parents are also given in the word by word translation.
 {wordbyword}
@@ -152,6 +173,7 @@ For example, the last step of your answer might look like this: ### 123 ###.
 """
     return prompt
 
+
 def prompt_gloss_translate(src_lang, tgt_lang, sent, gloss):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
@@ -163,6 +185,7 @@ In the end, please output your translation and enclose it in ###.
 For example, if your translation is "I have a ball", the last step of your answer should look like this: ### I have a ball. ###.
 """
     return prompt
+
 
 def prompt_gloss_dict_translate(src_lang, tgt_lang, sent, gloss, wordbyword):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
@@ -176,6 +199,7 @@ Note that for some words, there might be multiple possible translations. In this
 Please first explain what each word in the gloss means and then translate.
 Make sure to enclose your translation and only your translation in ###."""
     return prompt
+
 
 def prompt_gloss_dict_grammar_translate(src_lang, tgt_lang, sent, gloss, wordbyword, grammar):
     prompt = f"""Here is a grammar book of {src_lang}
@@ -198,6 +222,7 @@ Iteratively repeat the above two steps until you finish the translation.
 Make sure to enclose your translation and only your translation in ###."""
     return prompt
     
+
 def prompt_gloss_translation_iter(src_lang, tgt_lang, sent, gloss, intermediate):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
@@ -209,6 +234,7 @@ Please try to improve the intermediate translation according to the gloss.
 In the end, make sure to enclose your translation and only your translation in ###."""
     return prompt
 
+
 def prompt_wordmap_translate(src_lang, tgt_lang, sent, gloss):
     prompt = f"""Please help me translate the following sentence from {src_lang} to {tgt_lang}:
 {sent}
@@ -219,6 +245,7 @@ Some of the words do not have a mapping because they are not content words.
 Please first explain what each word means and then translate.
 Make sure to enclose your translation, and only your translation in ###."""
     return prompt
+
 
 def prompt_gloss_grammar(src_lang, tgt_lang, sent, gloss, grammar):
     prompt = f"""Here is a grammar book of {src_lang}
@@ -240,6 +267,7 @@ Please enclose your translation in ###.
 For example, if your translation is "Hello world", the last part of your output should be ### Hello world ###.
 """
     return prompt
+
 
 def prompt_wordmap_grammar(src_lang, tgt_lang, sent, gloss, grammar):
     prompt = f"""Here is a grammar book of {src_lang}
@@ -263,6 +291,7 @@ Make sure to enclose your final translation in ###.
 
 """
     return prompt
+
 
 def prompt_gloss_grammar_iterative(src_lang, tgt_lang, sent, gloss, intermediate, chapter_name, grammar):
     prompt = f"""Here is a chapter of a {src_lang} grammar book on {chapter_name}:
