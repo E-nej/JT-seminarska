@@ -348,7 +348,10 @@ def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dic
     return extract_enclosed_text(result), messages
 
 def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3):
-    openai.api_key = OPENAI_API_KEY
+    if use_rag:
+        from .rag import get_rag_context
+        grammar = get_rag_context(sent, src_lang, k=rag_k)
+
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=True)
     words = sent.split()
@@ -357,7 +360,7 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
     while i < len(words):
         if i + 1 < len(words):
             word = words[i] + " " + words[i + 1]
-            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":             
+            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":
                 wres, key = vdict.match(word)
                 if word == key:
                     wordbyword = wordbyword + word + ": " + wres + "\n"
@@ -366,7 +369,7 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
         wres, key = vdict.match(words[i])
         wordbyword = wordbyword + words[i] + ": " + wres + "\n"
         i += 1
-    
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar)}

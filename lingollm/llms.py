@@ -4,6 +4,7 @@ import time
 import torch
 import openai
 from google import genai
+import ollama
 from .consts import OPENAI_API_KEY, GEMINI_API_KEY, arapaho_morphology
 
 valid_models = [
@@ -11,7 +12,8 @@ valid_models = [
     "gpt-4o-2024-08-06",
     "mistralai/Mixtral-8x7B-Instruct-v0.1",
     "gpt-4o-mini-2024-07-18",
-    "gemini-3.1-flash-lite-preview"
+    "gemini-3.1-flash-lite-preview",
+    "qwen2.5:7b", 
 ]
 
 class LLMWrapper:
@@ -156,10 +158,41 @@ class GeminiWrapper(LLMWrapper):
 
         raise RuntimeError("Gemini API request failed after retries.")
 
+class OllamaWrapper(LLMWrapper):
+    def __init__(self, model_id):
+        self.model_id = model_id
+    
+    def __call__(self, messages) -> str:
+        max_attempts = 3
+        backoff_seconds = 2
+
+        for attempt in range(1, max_attempts + 1):
+            try:
+                response = ollama.chat(
+                    model=self.model_id,
+                    messages=messages,
+                    options={
+                        "top_p": 0.5,
+                        "num_ctx": 8192,  # 8k fits comfortably on your 32GB RAM
+                    }
+                )
+                return response['message']['content']
+            except Exception as exc:
+                if attempt == max_attempts:
+                    raise RuntimeError(f"Ollama request failed after {max_attempts} retries: {exc}") from exc
+                print(f"Ollama error (attempt {attempt}/{max_attempts}), retrying in {backoff_seconds * attempt}s...")
+                time.sleep(backoff_seconds * attempt)
+
+        raise RuntimeError("Ollama request failed after retries.")
+
 def get_llm_wrapper(model_id) -> LLMWrapper:
     if "gpt" in model_id:
         return ChatGPTWrapper(model_id)
     elif "gemini" in model_id:
         return GeminiWrapper(model_id)
+    elif ":" in model_id and "/" not in model_id:
+        # Ollama model format is "name:tag" (e.g. qwen2.5:7b, llama3.1:8b)
+        # HuggingFace uses "org/model" — no colon without slash
+        return OllamaWrapper(model_id)
     else:
         return HFWrapper(model_id)

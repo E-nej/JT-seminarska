@@ -86,54 +86,46 @@ def make_logs(src_lang, tgt_lang, pipeline_name, input_fn, dict_fn, output_dir, 
         shutil.copy(demo_fn, f'{output_dir}/code_bak/{demo_fn.split("/")[-1]}')
 
 
-if __name__ == '__main__':
-    args = parser.parse_args()
+def run(args):
     work_dir = args.work_dir
     input_fn = args.input_fn
-    dict_fn = args.dict_name
-    output_dir = args.output_dir
     pipeline_name = args.pipeline
     src_lang = args.src
     tgt_lang = args.tgt
-    iter = args.iter
-    demo = args.demo
-    llm = args.llm
     start = args.start
     use_rag = args.use_rag
     rag_k = args.rag_k
     output_dir = check_dirs(args)
-    
+
     if args.gloss_fn is None:
         args.gloss_fn = input_fn
-    
+
     work_dir = f"data/{work_dir}"
     input_fn = f"{work_dir}/{input_fn}"
-    dict_fn = f"{work_dir}/{dict_fn}"
+    dict_fn = f"{work_dir}/{args.dict_name}"
     output_dir = f"{work_dir}/outputs/{output_dir}"
     gloss_fn = f"{work_dir}/{args.gloss_fn}"
     demo_fn = f"{work_dir}/{args.demo}"
     grammar_fn = ""
-    if args.copy_prompt:
-        copy_prompt = args.copy_prompt
-    else:
-        copy_prompt = None
+    copy_prompt = args.copy_prompt or None
     if args.grammar_fn:
         grammar_fn = f"{work_dir}/{args.grammar_fn}"
-        
+
     print(f"OUTPUT_DIR: {output_dir}")
-    
+
     os.makedirs(output_dir, exist_ok=True)
-    
-    make_logs(src_lang, tgt_lang, pipeline_name, input_fn, dict_fn, output_dir, gloss_fn, grammar_fn, iter, demo_fn, llm, copy_prompt)
-    
+
+    llm_id = args.llm
+    make_logs(src_lang, tgt_lang, pipeline_name, input_fn, dict_fn, output_dir, gloss_fn, grammar_fn, args.iter, demo_fn, llm_id, copy_prompt)
+
     pipeline = PIPELINES[pipeline_name]
-    llm = get_llm_wrapper(llm)
-    
+    llm = get_llm_wrapper(llm_id)
+
     grammar = "[]" if grammar_fn == "" else open(grammar_fn, 'r').read()
     demo = "" if demo_fn == "" else open(demo_fn, 'r').read()
     if grammar.endswith('.json'):
         grammar = json.loads(grammar)
-    
+
     with open(input_fn, 'r') as f:
         with open(gloss_fn, 'r') as g:
             for i, (sent, gloss) in tqdm(enumerate(zip(f, g))):
@@ -144,19 +136,26 @@ if __name__ == '__main__':
                     continue
                 history = []
                 if copy_prompt:
-                    with open(f'{work_dir}/outputs/{copy_prompt}/history_{i}.json', 'r') as f:
-                        history = json.load(f)[:2]
-                
+                    with open(f'{work_dir}/outputs/{copy_prompt}/history_{i}.json', 'r') as hf:
+                        history = json.load(hf)[:2]
+
                 try:
-                    res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter, use_rag, rag_k)
+                    res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, args.iter, use_rag, rag_k)
                 except RuntimeError as exc:
                     print(f"\nGeneration stopped at line {i}: {exc}")
                     raise SystemExit(1)
-                with open(f'{output_dir}/output_{i}', 'w') as f:
-                    f.write(res)
-                with open(f'{output_dir}/history_{i}.json', 'w') as f:
-                    f.write(json.dumps(messages, indent=2))
-                    f.write('\n')
-    
+                with open(f'{output_dir}/output_{i}', 'w') as out:
+                    out.write(res)
+                with open(f'{output_dir}/history_{i}.json', 'w') as out:
+                    out.write(json.dumps(messages, indent=2))
+                    out.write('\n')
+
     if os.path.exists(dict_fn):
         shutil.copy(dict_fn, f'{output_dir}/code_bak/{dict_fn.split("/")[-1]}')
+
+    return output_dir
+
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+    run(args)
