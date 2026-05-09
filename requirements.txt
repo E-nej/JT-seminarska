@@ -12,3 +12,4 @@ datasets
 psycopg[binary]
 sentence-transformers
 sacrebleu
+llmlingua

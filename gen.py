@@ -25,6 +25,8 @@ parser.add_argument("--start", type=int, default=0, help="Start from line")
 parser.add_argument("--copy_prompt", type=str, default="", help="the output directory to copy prompts from", required=False)
 parser.add_argument("--use-rag", action="store_true")
 parser.add_argument("--rag-k", type=int, default=3)
+parser.add_argument("--use-compression", action="store_true")
+parser.add_argument("--compression-target", type=int, default=1200)
 
 
 def check_dirs(args):
@@ -95,6 +97,8 @@ def run(args):
     start = args.start
     use_rag = args.use_rag
     rag_k = args.rag_k
+    use_compression = args.use_compression
+    compression_target = args.compression_target
     output_dir = check_dirs(args)
 
     if args.gloss_fn is None:
@@ -140,7 +144,7 @@ def run(args):
                         history = json.load(hf)[:2]
 
                 try:
-                    res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, args.iter, use_rag, rag_k)
+                    res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, args.iter, use_rag, rag_k, use_compression, compression_target)
                 except RuntimeError as exc:
                     print(f"\nGeneration stopped at line {i}: {exc}")
                     raise SystemExit(1)

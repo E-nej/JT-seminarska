@@ -96,6 +96,8 @@ def _add_generate_parser(sub):
     p.add_argument("--start",       default=0,    type=int, help="Resume from sentence N")
     p.add_argument("--use-rag",     action="store_true")
     p.add_argument("--rag-k",       default=3,    type=int)
+    p.add_argument("--use-compression", action="store_true")
+    p.add_argument("--compression-target", default=1200, type=int)
     p.set_defaults(func=cmd_generate)
 
 
