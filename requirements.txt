@@ -9,3 +9,5 @@ transformers==4.44.2
 torch==2.4.0
 google-genai
 datasets
+psycopg[binary]
+sentence-transformers
