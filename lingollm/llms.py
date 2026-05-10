@@ -8,6 +8,7 @@ import ollama
 from .consts import OPENAI_API_KEY, GEMINI_API_KEY, arapaho_morphology
 
 valid_models = [
+    "local",
     "gpt-3.5-turbo-1106",
     "gpt-4o-2024-08-06",
     "mistralai/Mixtral-8x7B-Instruct-v0.1",
@@ -22,7 +23,7 @@ class LLMWrapper:
 
 class ChatGPTWrapper(LLMWrapper):
     def __init__(self, model_id):
-        if not OPENAI_API_KEY:
+        if not OPENAI_API_KEY and model_id != "local":
             raise EnvironmentError(
                 "OPENAI_API_KEY is not set. Export it before running GPT-based pipelines."
             )
@@ -30,7 +31,14 @@ class ChatGPTWrapper(LLMWrapper):
         self.model_id = model_id
     
     def __call__(self, messages) -> str:
-        client = openai.OpenAI(api_key=self.api_key)
+        if self.model_id == "local":
+            client = openai.OpenAI(
+                api_key="dummy",
+                base_url="http://127.0.0.1:8080/v1"
+            )
+        else:
+            client = openai.OpenAI(api_key=self.api_key)
+        
         max_attempts = 3
         backoff_seconds = 2
 
@@ -39,9 +47,13 @@ class ChatGPTWrapper(LLMWrapper):
                 stream = client.chat.completions.create(
                     model=self.model_id,
                     messages=messages,
-                    stream=True,
-                    top_p=0.5,
+                    stream=False if self.model_id == "local" else True,
+                    top_p=1.0 if self.model_id == "local" else 0.5,
+                    temperature=0.0,
                 )
+                if self.model_id == "local":
+                    return stream.choices[0].message.content
+                
                 content = ""
                 for chunk in stream:
                     if chunk.choices[0].delta.content is not None:
@@ -186,7 +198,7 @@ class OllamaWrapper(LLMWrapper):
         raise RuntimeError("Ollama request failed after retries.")
 
 def get_llm_wrapper(model_id) -> LLMWrapper:
-    if "gpt" in model_id:
+    if "gpt" in model_id or model_id == "local":
         return ChatGPTWrapper(model_id)
     elif "gemini" in model_id:
         return GeminiWrapper(model_id)
