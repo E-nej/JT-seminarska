@@ -34,12 +34,14 @@ class LLMWrapper:
 class LlamaCppWrapper(LLMWrapper):
     """Local llama.cpp server via OpenAI-compatible API."""
     def __init__(self, host="127.0.0.1", port=8080):
+        super().__init__()
         self.client = openai.OpenAI(
             api_key="dummy",
             base_url=f"http://{host}:{port}/v1"
         )
 
     def __call__(self, messages) -> str:
+        t0 = time.time()
         response = self.client.chat.completions.create(
             model="local",
             messages=messages,
@@ -47,6 +49,13 @@ class LlamaCppWrapper(LLMWrapper):
             temperature=0.0,
             top_p=1.0,
         )
+        elapsed = time.time() - t0
+        usage = getattr(response, "usage", None)
+        self.call_history.append({
+            "input_tokens": usage.prompt_tokens if usage else None,
+            "output_tokens": usage.completion_tokens if usage else None,
+            "latency_s": round(elapsed, 3),
+        })
         return response.choices[0].message.content
 
 
