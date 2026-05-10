@@ -4,7 +4,8 @@ import time
 import torch
 import openai
 from google import genai
-import ollama
+#import ollama
+from google.genai import types
 from .consts import OPENAI_API_KEY, GEMINI_API_KEY, arapaho_morphology
 
 valid_models = [
@@ -20,45 +21,55 @@ valid_models = [
 class LLMWrapper:
     def __call__(self, messages):
         raise NotImplementedError
+    
+
+class LlamaCppWrapper(LLMWrapper):
+    """Local llama.cpp server via OpenAI-compatible API."""
+    def __init__(self, host="127.0.0.1", port=8080):
+        self.client = openai.OpenAI(
+            api_key="dummy",
+            base_url=f"http://{host}:{port}/v1"
+        )
+
+    def __call__(self, messages) -> str:
+        response = self.client.chat.completions.create(
+            model="local",
+            messages=messages,
+            stream=False,
+            temperature=0.0,
+            top_p=1.0,
+        )
+        return response.choices[0].message.content
+
 
 class ChatGPTWrapper(LLMWrapper):
     def __init__(self, model_id):
-        if not OPENAI_API_KEY and model_id != "local":
+        if not OPENAI_API_KEY:
             raise EnvironmentError(
                 "OPENAI_API_KEY is not set. Export it before running GPT-based pipelines."
             )
-        self.api_key = OPENAI_API_KEY
+        self.client = openai.OpenAI(api_key=OPENAI_API_KEY)
         self.model_id = model_id
-    
+
     def __call__(self, messages) -> str:
-        if self.model_id == "local":
-            client = openai.OpenAI(
-                api_key="dummy",
-                base_url="http://127.0.0.1:8080/v1"
-            )
-        else:
-            client = openai.OpenAI(api_key=self.api_key)
-        
         max_attempts = 3
         backoff_seconds = 2
 
         for attempt in range(1, max_attempts + 1):
             try:
-                stream = client.chat.completions.create(
+                stream = self.client.chat.completions.create(
                     model=self.model_id,
                     messages=messages,
-                    stream=False if self.model_id == "local" else True,
-                    top_p=1.0 if self.model_id == "local" else 0.5,
+                    stream=True,
                     temperature=0.0,
+                    top_p=1.0,
                 )
-                if self.model_id == "local":
-                    return stream.choices[0].message.content
-                
                 content = ""
                 for chunk in stream:
                     if chunk.choices[0].delta.content is not None:
                         content += chunk.choices[0].delta.content
                 return content
+
             except openai.RateLimitError as exc:
                 error_body = getattr(exc, "body", {}) or {}
                 error_obj = error_body.get("error", {}) if isinstance(error_body, dict) else {}
@@ -68,7 +79,6 @@ class ChatGPTWrapper(LLMWrapper):
                         "OpenAI API request failed: insufficient quota for this API key. "
                         "Add billing/credits or switch to a non-OpenAI model id in --llm."
                     ) from exc
-
                 if attempt == max_attempts:
                     raise RuntimeError(
                         f"OpenAI API request failed after {max_attempts} retries due to rate limiting "
@@ -81,6 +91,7 @@ class ChatGPTWrapper(LLMWrapper):
                 raise RuntimeError(f"OpenAI API request failed: {exc}") from exc
 
         raise RuntimeError("OpenAI API request failed after retries.")
+    
     
 class HFWrapper(LLMWrapper):
     def __init__(self, model_id):
@@ -118,10 +129,14 @@ Here is a grammar book of Arapaho:
         # tokenized_chat = tokenized_chat 
         outputs = self.model.generate(
             tokenized_chat.to(self.model.device),
-            max_new_tokens=32000, do_sample=True, top_p=0.9,
+            max_new_tokens=32000,
+            do_sample=False,
+            repetition_penalty=1.05,
             eos_token_id=self.tokenizer.eos_token_id,
+            pad_token_id=self.tokenizer.pad_token_id or self.tokenizer.eos_token_id,
         )
         return self.tokenizer.decode(outputs[0][len(tokenized_chat[0]):], skip_special_tokens=True)
+
 
 class GeminiWrapper(LLMWrapper):
     def __init__(self, model_id):
@@ -129,14 +144,10 @@ class GeminiWrapper(LLMWrapper):
             raise EnvironmentError(
                 "GEMINI_API_KEY is not set. Export it before running Gemini-based pipelines."
             )
-        self.api_key = GEMINI_API_KEY
+        self.client = genai.Client(api_key=GEMINI_API_KEY)
         self.model_id = model_id
     
     def __call__(self, messages) -> str:
-        from google.genai import types
-
-        client = genai.Client(api_key=self.api_key)
-
         system_instruction = None
         conversation = []
         for msg in messages:
@@ -148,7 +159,8 @@ class GeminiWrapper(LLMWrapper):
 
         config = types.GenerateContentConfig(
             system_instruction=system_instruction,
-            top_p=0.5,
+            temperature=0.0,
+            top_p=1.0,
         )
 
         max_attempts = 3
@@ -156,7 +168,7 @@ class GeminiWrapper(LLMWrapper):
 
         for attempt in range(1, max_attempts + 1):
             try:
-                response = client.models.generate_content(
+                response = self.client.models.generate_content(
                     model=self.model_id,
                     contents=conversation,
                     config=config,
@@ -184,7 +196,8 @@ class OllamaWrapper(LLMWrapper):
                     model=self.model_id,
                     messages=messages,
                     options={
-                        "top_p": 0.5,
+                        "temperature": 0.0,
+                        "top_p": 1.0,
                         "num_ctx": 8192,  # 8k fits comfortably on your 32GB RAM
                     }
                 )
@@ -198,7 +211,9 @@ class OllamaWrapper(LLMWrapper):
         raise RuntimeError("Ollama request failed after retries.")
 
 def get_llm_wrapper(model_id) -> LLMWrapper:
-    if "gpt" in model_id or model_id == "local":
+    if model_id == "local":
+        return LlamaCppWrapper()
+    elif "gpt" in model_id:
         return ChatGPTWrapper(model_id)
     elif "gemini" in model_id:
         return GeminiWrapper(model_id)
