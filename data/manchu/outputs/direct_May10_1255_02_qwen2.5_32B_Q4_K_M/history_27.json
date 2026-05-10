@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\neiqi sini ama eniye taqi sembio\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "To provide a translation, it's important to note that Manchu is a Tungusic language, and while I can attempt a translation based on available knowledge, the accuracy might be limited due to the complexity and specific context required for precise translations.\n\nGiven the sentence \"eiqi sini ama eniye taqi sembio,\" a rough translation attempt would be:\n\n### This sentence seems to be a combination of Manchu words that might not form a complete or coherent phrase in English without more context. However, a literal word-by-word translation could be something like \"this year father what time,\" which doesn't make much sense without additional context or knowledge of the sentence structure in Manchu. ###"
+  }
+]

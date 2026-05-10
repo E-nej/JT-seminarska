@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nage si daqi yabuha niyalma\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I will attempt to translate the Manchu phrase provided. Manchu is a Tungusic language, and while it is not commonly spoken today, it has a rich history and was the language of the Qing dynasty in China.\n\nThe phrase \"age si daqi yabuha niyalma\" seems to be a combination of Manchu words. Without a direct context, the translation can be challenging, but I'll do my best:\n\n- \"age\" can mean \"what\" or \"which\"\n- \"si\" can mean \"ten\"\n- \"daqi\" can mean \"big\" or \"great\"\n- \"yabuha\" can mean \"to be\" or \"to exist\"\n- \"niyalma\" can mean \"man\" or \"people\"\n\nPutting these together, a possible translation could be \"what great men exist\" or \"which great people are there.\"\n\n### What great men exist? ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi yali qolame bahanarakv\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "To provide a translation from Manchu, it's important to note that Manchu is a Tungusic language and was the primary language of the Qing dynasty in China. However, it's not widely spoken today, and resources for translation can be limited. The sentence you provided seems to be a phrase in Manchu, but without a comprehensive dictionary or context, the translation can be challenging.\n\nGiven the phrase \"bi yali qolame bahanarakv,\" a rough translation might be:\n\n### I am reading a book ###\n\nThis translation assumes certain meanings based on the structure and known words in Manchu, but it's important to verify with a Manchu language expert or resource for accuracy."
+  }
+]

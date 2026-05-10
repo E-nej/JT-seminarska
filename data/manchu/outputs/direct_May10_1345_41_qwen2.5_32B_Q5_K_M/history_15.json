@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngeli ai xolo de nikan i gisun be mujakv sain i taqiha\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I will attempt to translate the provided Manchu sentence to English. Manchu is a Tungusic language, and while it is not as widely studied as some other languages, I'll use my knowledge to provide a translation.\n\n### The sentence seems to be referring to a greeting or a well-wishing phrase, but without a deep context or more specific knowledge of Manchu vocabulary, the translation might not be entirely accurate. A rough translation could be \"May you have good fortune in your speech to the people.\" ###\n\nPlease note that Manchu language expertise is quite specialized, and this translation is based on a general understanding and may not be precise."
+  }
+]

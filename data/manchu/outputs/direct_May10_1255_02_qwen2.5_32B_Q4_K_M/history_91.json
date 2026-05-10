@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nqoko hvlaha manggi ilifi uthai yabuki\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I will attempt to translate the given Manchu sentence to English. Manchu is a Tungusic language, and while it is not as widely studied as some other languages, I'll use my knowledge to provide a translation.\n\n### The sentence seems to contain some errors or it's not a standard phrase in Manchu, making it difficult to provide an accurate translation. However, I can break down what I recognize: \"qoko\" could be related to \"dog,\" \"hvlaha\" might be a verb form, and \"ilifi\" could be a number or a specific term, but without a clear context or standard spelling, an exact translation is challenging. ###"
+  }
+]

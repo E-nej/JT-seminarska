@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi gemun heqen i baru genembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I will attempt to translate the provided Manchu sentence to English. Manchu is a Tungusic language, and while it is not as widely studied as some other languages, I'll use my knowledge to provide a translation.\n\n### I do not know this matter well. ###\n\nThis translation is based on the understanding that \"bi\" can mean \"I,\" \"gemun\" can relate to \"know\" or \"understand,\" and \"heqen\" can mean \"this\" or \"such.\" The rest of the sentence structure suggests a negation or uncertainty about knowing something well. Please note that Manchu can be complex, and this translation might not be entirely accurate without further context."
+  }
+]

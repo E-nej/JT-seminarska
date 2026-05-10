@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nmuse enenggi dobori aibide dedume genembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "### I am reaching out to understand this Manchu phrase better, as my expertise is primarily in a wide range of languages but not specifically in Manchu. However, I can attempt a translation based on general knowledge and patterns. The phrase \"muse enenggi dobori aibide dedume genembi\" seems to contain elements that might relate to time or counting, but without a specific context or dictionary for Manchu, I can't provide a confident translation. My attempt would be something like \"during the time of the fifth month,\" but this is speculative. ###"
+  }
+]

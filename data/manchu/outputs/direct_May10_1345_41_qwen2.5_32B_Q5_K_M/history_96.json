@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ntere booi amala hvqin bi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I will attempt to translate the provided Manchu phrase. However, please note that Manchu is a complex language and without context, the translation might not be entirely accurate. The phrase \"tere booi amala hvqin bi\" seems to contain some elements that are not immediately clear or may have transcription issues, particularly \"hvqin\" which doesn't seem to follow typical Manchu phonetics or vocabulary. Nonetheless, I'll give it a try based on the parts I recognize.\n\n### I am the son/child of this master ###\n\nThis translation assumes \"tere\" means \"this,\" \"booi\" means \"master's\" or \"owner's,\" \"amala\" could be interpreted as \"son\" or \"child,\" and \"bi\" means \"I\" or \"me.\" The term \"hvqin\" is challenging to interpret without additional context or a corrected spelling."
+  }
+]
