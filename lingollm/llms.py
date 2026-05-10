@@ -197,7 +197,7 @@ class GeminiWrapper(LLMWrapper):
         for attempt in range(1, max_attempts + 1):
             try:
                 t0 = time.time()
-                response = client.models.generate_content(
+                response = self.client.models.generate_content(
                     model=self.model_id,
                     contents=conversation,
                     config=config,
