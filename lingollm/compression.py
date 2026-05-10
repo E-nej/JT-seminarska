@@ -20,8 +20,8 @@ def compress_prompt_text(
     instruction: str = "",  # sistemsko navodilo (lahko prazno)
     question: str = "",  # vhodni stavek, zaradi katerega naj compressor ohrani relevantne informacije
     target_token: int = 1200,
-) -> str:
-
+) -> tuple[str, dict]:
+    """Returns (compressed_text, stats) where stats has original_tokens, compressed_tokens, ratio."""
     compressor = get_compressor()
 
     result = compressor.compress_prompt(
@@ -31,4 +31,11 @@ def compress_prompt_text(
         target_token=target_token,
     )
 
-    return result["compressed_prompt"]
+    original = result.get("origin_tokens") or 0
+    compressed = result.get("compressed_tokens") or 0
+    stats = {
+        "original_tokens": original,
+        "compressed_tokens": compressed,
+        "ratio": round(compressed / original, 3) if original else None,
+    }
+    return result["compressed_prompt"], stats

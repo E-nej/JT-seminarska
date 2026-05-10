@@ -5,6 +5,7 @@ from datetime import datetime
 import json
 import shutil
 import glob
+import time
 from tqdm import tqdm
 from lingollm.llms import get_llm_wrapper
 
@@ -88,6 +89,60 @@ def make_logs(src_lang, tgt_lang, pipeline_name, input_fn, dict_fn, output_dir, 
         shutil.copy(demo_fn, f'{output_dir}/code_bak/{demo_fn.split("/")[-1]}')
 
 
+def _collect_stats(idx, elapsed, llm):
+    call_history = getattr(llm, 'call_history', [])
+    compression_stats = getattr(llm, 'compression_stats', None)
+
+    total_input = sum(c.get('input_tokens') or 0 for c in call_history)
+    total_output = sum(c.get('output_tokens') or 0 for c in call_history)
+
+    stats = {
+        "sentence_idx": idx,
+        "total_latency_s": round(elapsed, 3),
+        "total_input_tokens": total_input if total_input else None,
+        "total_output_tokens": total_output if total_output else None,
+        "llm_calls": call_history,
+    }
+    if compression_stats:
+        stats["compression"] = compression_stats
+    return stats
+
+
+def _write_summary(output_dir, all_stats, start_idx):
+    if not all_stats:
+        return
+
+    n = len(all_stats)
+    total_latency = sum(s["total_latency_s"] for s in all_stats)
+
+    input_tokens = [s["total_input_tokens"] for s in all_stats if s.get("total_input_tokens")]
+    output_tokens = [s["total_output_tokens"] for s in all_stats if s.get("total_output_tokens")]
+
+    summary = {
+        "sentences_processed": n,
+        "start_idx": start_idx,
+        "total_latency_s": round(total_latency, 3),
+        "avg_latency_s": round(total_latency / n, 3),
+    }
+
+    if input_tokens:
+        summary["total_input_tokens"] = sum(input_tokens)
+        summary["avg_input_tokens"] = round(sum(input_tokens) / len(input_tokens), 1)
+    if output_tokens:
+        summary["total_output_tokens"] = sum(output_tokens)
+        summary["avg_output_tokens"] = round(sum(output_tokens) / len(output_tokens), 1)
+
+    comp_list = [s["compression"] for s in all_stats if s.get("compression")]
+    if comp_list:
+        summary["compression"] = {
+            "avg_original_tokens": round(sum(c["original_tokens"] for c in comp_list) / len(comp_list), 1),
+            "avg_compressed_tokens": round(sum(c["compressed_tokens"] for c in comp_list) / len(comp_list), 1),
+            "avg_ratio": round(sum(c["ratio"] for c in comp_list if c.get("ratio")) / len(comp_list), 3),
+        }
+
+    json.dump(summary, open(f'{output_dir}/stats_summary.json', 'w'), indent=2)
+
+
 def run(args):
     work_dir = args.work_dir
     input_fn = args.input_fn
@@ -130,6 +185,7 @@ def run(args):
     if grammar.endswith('.json'):
         grammar = json.loads(grammar)
 
+    all_stats = []
     with open(input_fn, 'r') as f:
         with open(gloss_fn, 'r') as g:
             for i, (sent, gloss) in tqdm(enumerate(zip(f, g))):
@@ -143,16 +199,28 @@ def run(args):
                     with open(f'{work_dir}/outputs/{copy_prompt}/history_{i}.json', 'r') as hf:
                         history = json.load(hf)[:2]
 
+                llm.reset_stats()
+                t0 = time.time()
                 try:
                     res, messages = pipeline(llm, history, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, args.iter, use_rag, rag_k, use_compression, compression_target)
                 except RuntimeError as exc:
                     print(f"\nGeneration stopped at line {i}: {exc}")
                     raise SystemExit(1)
+                elapsed = time.time() - t0
+
                 with open(f'{output_dir}/output_{i}', 'w') as out:
                     out.write(res)
                 with open(f'{output_dir}/history_{i}.json', 'w') as out:
                     out.write(json.dumps(messages, indent=2))
                     out.write('\n')
+
+                stats = _collect_stats(i, elapsed, llm)
+                all_stats.append(stats)
+                with open(f'{output_dir}/stats_{i}.json', 'w') as out:
+                    json.dump(stats, out, indent=2)
+                    out.write('\n')
+
+    _write_summary(output_dir, all_stats, start)
 
     if os.path.exists(dict_fn):
         shutil.copy(dict_fn, f'{output_dir}/code_bak/{dict_fn.split("/")[-1]}')

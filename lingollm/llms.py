@@ -13,22 +13,31 @@ valid_models = [
     "mistralai/Mixtral-8x7B-Instruct-v0.1",
     "gpt-4o-mini-2024-07-18",
     "gemini-3.1-flash-lite-preview",
-    "qwen2.5:7b", 
+    "qwen2.5:7b",
 ]
 
 class LLMWrapper:
+    def __init__(self):
+        self.call_history = []   # one dict per __call__: {input_tokens, output_tokens, latency_s}
+        self.compression_stats = None  # set by maybe_compress_messages when compression is used
+
+    def reset_stats(self):
+        self.call_history = []
+        self.compression_stats = None
+
     def __call__(self, messages):
         raise NotImplementedError
 
 class ChatGPTWrapper(LLMWrapper):
     def __init__(self, model_id):
+        super().__init__()
         if not OPENAI_API_KEY:
             raise EnvironmentError(
                 "OPENAI_API_KEY is not set. Export it before running GPT-based pipelines."
             )
         self.api_key = OPENAI_API_KEY
         self.model_id = model_id
-    
+
     def __call__(self, messages) -> str:
         client = openai.OpenAI(api_key=self.api_key)
         max_attempts = 3
@@ -36,16 +45,27 @@ class ChatGPTWrapper(LLMWrapper):
 
         for attempt in range(1, max_attempts + 1):
             try:
+                t0 = time.time()
                 stream = client.chat.completions.create(
                     model=self.model_id,
                     messages=messages,
                     stream=True,
+                    stream_options={"include_usage": True},
                     top_p=0.5,
                 )
                 content = ""
+                usage = None
                 for chunk in stream:
-                    if chunk.choices[0].delta.content is not None:
+                    if chunk.choices and chunk.choices[0].delta.content is not None:
                         content += chunk.choices[0].delta.content
+                    if getattr(chunk, "usage", None) is not None:
+                        usage = chunk.usage
+                elapsed = time.time() - t0
+                self.call_history.append({
+                    "input_tokens": usage.prompt_tokens if usage else None,
+                    "output_tokens": usage.completion_tokens if usage else None,
+                    "latency_s": round(elapsed, 3),
+                })
                 return content
             except openai.RateLimitError as exc:
                 error_body = getattr(exc, "body", {}) or {}
@@ -69,9 +89,10 @@ class ChatGPTWrapper(LLMWrapper):
                 raise RuntimeError(f"OpenAI API request failed: {exc}") from exc
 
         raise RuntimeError("OpenAI API request failed after retries.")
-    
+
 class HFWrapper(LLMWrapper):
     def __init__(self, model_id):
+        super().__init__()
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
         if self.model_id == "mistralai/Mixtral-8x7B-Instruct-v0.1":
@@ -82,7 +103,7 @@ class HFWrapper(LLMWrapper):
             self.model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=quantization_config, device_map="auto")
         else:
             self.model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True, torch_dtype=torch.float16, device_map="auto")
-    
+
     def __call__(self, messages):
         if self.model_id == "mistralai/Mixtral-8x7B-Instruct-v0.1" or self.model_id == "mistralai/Mistral-7B-Instruct-v0.2":
             if len(messages[1]["content"]) > 300000:
@@ -93,7 +114,7 @@ Here is a grammar book of Arapaho:
 {arapaho_morphology}
 
 """ + messages[1]["content"][pos:]
-                
+
             messages = [
                 {"role": "user", "content": messages[0]["content"] + messages[1]["content"]},
             ] + messages[2:]
@@ -103,23 +124,32 @@ Here is a grammar book of Arapaho:
             add_generation_prompt=True,
             return_tensors="pt"
         )
-        # tokenized_chat = tokenized_chat 
+        input_len = len(tokenized_chat[0])
+        t0 = time.time()
         outputs = self.model.generate(
             tokenized_chat.to(self.model.device),
             max_new_tokens=32000, do_sample=True, top_p=0.9,
             eos_token_id=self.tokenizer.eos_token_id,
         )
-        return self.tokenizer.decode(outputs[0][len(tokenized_chat[0]):], skip_special_tokens=True)
+        elapsed = time.time() - t0
+        output_len = len(outputs[0]) - input_len
+        self.call_history.append({
+            "input_tokens": input_len,
+            "output_tokens": output_len,
+            "latency_s": round(elapsed, 3),
+        })
+        return self.tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
 
 class GeminiWrapper(LLMWrapper):
     def __init__(self, model_id):
+        super().__init__()
         if not GEMINI_API_KEY:
             raise EnvironmentError(
                 "GEMINI_API_KEY is not set. Export it before running Gemini-based pipelines."
             )
         self.api_key = GEMINI_API_KEY
         self.model_id = model_id
-    
+
     def __call__(self, messages) -> str:
         from google.genai import types
 
@@ -144,11 +174,19 @@ class GeminiWrapper(LLMWrapper):
 
         for attempt in range(1, max_attempts + 1):
             try:
+                t0 = time.time()
                 response = client.models.generate_content(
                     model=self.model_id,
                     contents=conversation,
                     config=config,
                 )
+                elapsed = time.time() - t0
+                usage = getattr(response, "usage_metadata", None)
+                self.call_history.append({
+                    "input_tokens": getattr(usage, "prompt_token_count", None) if usage else None,
+                    "output_tokens": getattr(usage, "candidates_token_count", None) if usage else None,
+                    "latency_s": round(elapsed, 3),
+                })
                 return response.text
             except Exception as exc:
                 if attempt == max_attempts:
@@ -160,14 +198,16 @@ class GeminiWrapper(LLMWrapper):
 
 class OllamaWrapper(LLMWrapper):
     def __init__(self, model_id):
+        super().__init__()
         self.model_id = model_id
-    
+
     def __call__(self, messages) -> str:
         max_attempts = 3
         backoff_seconds = 2
 
         for attempt in range(1, max_attempts + 1):
             try:
+                t0 = time.time()
                 response = ollama.chat(
                     model=self.model_id,
                     messages=messages,
@@ -176,7 +216,33 @@ class OllamaWrapper(LLMWrapper):
                         "num_ctx": 8192,  # 8k fits comfortably on your 32GB RAM
                     }
                 )
-                return response['message']['content']
+                elapsed = time.time() - t0
+
+                # handle both dict-style and object-style ollama responses
+                def _get(key):
+                    try:
+                        return response[key]
+                    except (KeyError, TypeError):
+                        return getattr(response, key, None)
+
+                prompt_tokens = _get("prompt_eval_count")
+                eval_tokens = _get("eval_count")
+                eval_duration_ns = _get("eval_duration")
+                tps = None
+                if eval_tokens and eval_duration_ns:
+                    tps = round(eval_tokens / (eval_duration_ns / 1e9), 1)
+
+                self.call_history.append({
+                    "input_tokens": prompt_tokens,
+                    "output_tokens": eval_tokens,
+                    "latency_s": round(elapsed, 3),
+                    "tokens_per_second": tps,
+                })
+
+                try:
+                    return response['message']['content']
+                except (KeyError, TypeError):
+                    return response.message.content
             except Exception as exc:
                 if attempt == max_attempts:
                     raise RuntimeError(f"Ollama request failed after {max_attempts} retries: {exc}") from exc

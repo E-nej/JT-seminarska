@@ -26,13 +26,16 @@ import random
 from .consts import OPENAI_API_KEY, DICT_CLASSES
 
 
-def maybe_compress_messages(messages, sent, use_compression=False, compression_target=1200):
+def maybe_compress_messages(messages, sent, use_compression=False, compression_target=1200, llm=None):
     if not use_compression:
         return messages
 
     from .compression import compress_prompt_text
 
-    messages[1]["content"] = compress_prompt_text(prompt=messages[1]["content"], question=sent, target_token=compression_target)
+    compressed, stats = compress_prompt_text(prompt=messages[1]["content"], question=sent, target_token=compression_target)
+    messages[1]["content"] = compressed
+    if llm is not None:
+        llm.compression_stats = stats
 
     return messages
 
@@ -269,7 +272,7 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
         {"role": "user", "content": prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar)}
     ]
 
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target)  # vzame messages in po potrebi stisne user prompt (messages[1]["content"])
+    messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)  # vzame messages in po potrebi stisne user prompt (messages[1]["content"])
 
     result = llm(messages)
     messages.append({"role": "system", "content": result})
@@ -369,7 +372,7 @@ def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dic
         {"role": "user", "content": prompt_gloss_dict_grammar_translate(src_lang, tgt_lang, sent, gloss, wordbyword, grammar)}
     ]
 
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
+    messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)
 
     result = llm(messages)
     messages.append({"role": "system", "content": result})
@@ -404,7 +407,7 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
         {"role": "user", "content": prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar)}
     ]
 
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
+    messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)
 
     result = llm(messages)
     messages.append({"role": "system", "content": result})
@@ -436,7 +439,7 @@ def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glos
         {"role": "user", "content": prompt_dict_grammar_solve(src_lang, tgt_lang, sent, wordbyword, grammar)}
     ]
 
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
+    messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)
 
     completion = openai.ChatCompletion.create(
         model=MODEL_CKPT,
@@ -510,7 +513,7 @@ def gloss_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn,
         {"role": "user", "content": prompt_gloss_grammar(src_lang, tgt_lang, sent, gloss, grammar)}
     ]
 
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
+    messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)
 
     result = llm(messages)
     messages.append({"role": "system", "content": result})
@@ -524,7 +527,7 @@ def wordmap_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_f
         {"role": "user", "content": prompt_wordmap_grammar(src_lang, tgt_lang, sent, gloss, demo, grammar)}
     ]
 
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
+    messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)
 
     completion = openai.ChatCompletion.create(
         model=MODEL_CKPT,
