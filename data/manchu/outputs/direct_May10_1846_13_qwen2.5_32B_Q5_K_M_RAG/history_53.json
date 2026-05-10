@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngemun heqen i morin hvda antaka\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I'll do my best to translate the Manchu sentence provided. Manchu is a Tungusic language, and while it's not as widely studied or known as some other languages, I'll attempt the translation based on available knowledge.\n\nThe sentence \"gemun heqen i morin hvda antaka\" seems to contain words that might relate to actions or descriptions involving a horse or riding. However, without a direct context or more specific knowledge of the dialect or period of the Manchu language used, the translation can be challenging.\n\n### The horse of the hunter is running. ###\n\nPlease note that this translation is an approximation and may not be entirely accurate due to the limited context and my expertise in Manchu."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsithvme taqibumbio sithvme taqiburakvn\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "The Manchu language, also known as Manchu-Mongolic, is not commonly known, and translating specific phrases requires careful consideration of context and linguistic resources. The phrase you provided seems to be a repetition with slight variation, which might indicate a specific grammatical structure or emphasis in Manchu. Without a direct dictionary reference or more context, the translation can be challenging. However, I will attempt a translation based on the structure and patterns typically seen in Manchu.\n\n### I am thinking of you, I am remembering you ###"
+  }
+]

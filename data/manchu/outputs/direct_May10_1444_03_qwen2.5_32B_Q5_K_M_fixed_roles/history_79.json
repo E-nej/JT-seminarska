@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngoidame aqahakv bihe\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I'll give this a try based on my knowledge of Manchu. The sentence \"goidame aqahakv bihe\" seems to be a phrase that might relate to actions or states of being. However, Manchu can be quite complex, and without more context, a direct translation can be challenging. Here's my attempt:\n\n### I am going to do it, or I will do it ###\n\nPlease note that this translation is an approximation, and the exact meaning could vary based on context."
+  }
+]

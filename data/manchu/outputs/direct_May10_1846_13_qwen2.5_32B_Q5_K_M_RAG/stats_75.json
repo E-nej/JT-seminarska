@@ -1,0 +1,13 @@
+{
+  "sentence_idx": 75,
+  "total_latency_s": 20.187,
+  "total_input_tokens": 124,
+  "total_output_tokens": 128,
+  "llm_calls": [
+    {
+      "input_tokens": 124,
+      "output_tokens": 128,
+      "latency_s": 20.187
+    }
+  ]
+}

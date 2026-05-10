@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsi inenggidari aibe kiqembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I will attempt to translate the provided Manchu phrase to English. Manchu is a Tungusic language, and while it is not commonly spoken today, it was the language of the Manchu people who ruled China during the Qing dynasty. The phrase you've provided seems to be quite specific and may not have a direct translation without more context.\n\nGiven the limited information and my best effort, the phrase \"si inenggidari aibe kiqembi\" could loosely relate to a form of address or a specific term, but without a deeper understanding or context, it's challenging to provide an accurate translation.\n\n### In the absence of more specific knowledge, a direct translation is not confidently possible, but it might relate to a form of address or title. ###"
+  }
+]

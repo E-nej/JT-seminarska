@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbithe giyangname wajifi jai aibe kiqembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I will attempt to translate the provided Manchu sentence. Manchu is a Tungusic language, and while it is not commonly spoken today, it has a rich written history. The sentence you provided seems to be a phrase that might not be directly translatable word-for-word due to differences in grammar and syntax between Manchu and English. However, I'll do my best to interpret it.\n\n### I am not certain of the exact meaning, but it seems to involve names or titles and possibly a form of address or greeting. Without more context, a precise translation is challenging. ###"
+  }
+]

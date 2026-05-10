@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ndengjan dabufi gajiha, fajiran de lakiya\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I understand that you're looking for a translation from Manchu to English. Manchu is an endangered Tungusic language, and while I can attempt a translation based on available resources and linguistic knowledge, please note that the accuracy might be limited due to the complexity and the specific context required for such translations.\n\nGiven the sentence \"dengjan dabufi gajiha, fajiran de lakiya,\" a tentative translation could be:\n\n### People of the two sides, they are crossing the river ###\n\nThis translation is based on general knowledge of Manchu vocabulary and structure, but it might not be entirely accurate without more context or specialized knowledge."
+  }
+]

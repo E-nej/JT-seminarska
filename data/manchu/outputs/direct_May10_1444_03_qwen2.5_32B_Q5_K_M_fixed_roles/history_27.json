@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\neiqi sini ama eniye taqi sembio\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I'll give this a try based on my understanding of the Manchu language. The sentence structure and vocabulary in Manchu can be quite different from English, so my translation might not be perfect.\n\n### This is a place where the mother's heart is ###\n\nPlease note that translating from Manchu can be challenging due to the limited resources and the complexity of the language. This translation is an attempt based on the words provided."
+  }
+]

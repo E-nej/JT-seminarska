@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere emke hala Li mini nakqu de banjiha tara ahvn\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I will attempt to translate the provided Manchu sentence to English. Manchu is a Tungusic language, and while it is not commonly spoken today, it was the language of the Manchu people who ruled China during the Qing dynasty. Here is my attempt at translation based on the structure and words provided:\n\n### We are now in the Li period, this is the record of the day. ###\n\nPlease note that Manchu language translation can be quite complex and context-dependent, so this translation might not be entirely accurate without more context or specific knowledge of the historical and cultural background."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngvsin sunja se ohot\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I'll give this a try based on my understanding of the Manchu language. The sentence \"gvsin sunja se ohot\" seems to be quite short and might be missing some context for a precise translation, but I'll attempt it.\n\n### I am a good person ###\n\nPlease note that this translation is speculative and might not be accurate without more context or specific knowledge of the dialect or script used."
+  }
+]
