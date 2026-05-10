@@ -23,10 +23,10 @@ parser.add_argument('--demo', type=str, default="", help='demo examples', requir
 parser.add_argument("--llm", type=str, default="", help="LLM model id", required=True)
 parser.add_argument("--start", type=int, default=0, help="Start from line")
 parser.add_argument("--copy_prompt", type=str, default="", help="the output directory to copy prompts from", required=False)
-parser.add_argument("--use-rag", action="store_true")
-parser.add_argument("--rag-k", type=int, default=3)
-parser.add_argument("--use-compression", action="store_true")
-parser.add_argument("--compression-target", type=int, default=1200)
+parser.add_argument("--use_rag", action="store_true")
+parser.add_argument("--rag_k", type=int, default=3)
+parser.add_argument("--use_compression", action="store_true")
+parser.add_argument("--compression_target", type=int, default=1200)
 
 
 def check_dirs(args):

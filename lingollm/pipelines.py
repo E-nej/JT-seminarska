@@ -30,9 +30,9 @@ def maybe_compress_messages(messages, sent, use_compression=False, compression_t
     if not use_compression:
         return messages
 
-    from .compression import maybe_compress_prompt
+    from .compression import compress_prompt_text
 
-    messages[1]["content"] = maybe_compress_prompt(prompt=messages[1]["content"], use_compression=True, sent=sent, target_token=compression_target)
+    messages[1]["content"] = compress_prompt_text(prompt=messages[1]["content"], question=sent, target_token=compression_target)
 
     return messages
 

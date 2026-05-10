@@ -32,15 +32,3 @@ def compress_prompt_text(
     )
 
     return result["compressed_prompt"]
-
-
-def maybe_compress_prompt(prompt: str, use_compression: bool = False, sent: str = "", target_token: int = 1200) -> str:
-
-    if not use_compression:  # kompresija OFF: originalni prompt, ON: stisnjen prompt
-        return prompt
-
-    return compress_prompt_text(
-        prompt=prompt,
-        question=sent,
-        target_token=target_token,
-    )
