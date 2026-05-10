@@ -46,10 +46,16 @@ class Manchu_VDict(VDict):
         super().__init__(filename, initial_words, create_new_dict)
         self.driver = None
         self.wait_time = wait_time
+
     
     def real_match(self, key):
+        from selenium.webdriver.chrome.options import Options
         if self.driver is None:
-            self.driver = webdriver.Chrome()
+            options = Options()
+            options.add_argument("--headless")
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            self.driver = webdriver.Chrome(options=options)
         self.driver.get("https://buleku.org/home")
         search_box = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/div[1]/div[1]/div/div/div/div/input')
         search_box.send_keys(Keys.COMMAND + "a")
