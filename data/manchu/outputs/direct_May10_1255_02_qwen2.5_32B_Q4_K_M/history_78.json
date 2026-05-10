@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nwang hala amba age jiheo\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I'm not a Manchu language expert, but I can attempt a translation based on the components of the sentence you've provided. \"Wang\" can mean king or emperor, \"hala\" can refer to a type of official or minister, \"amba\" can mean mother or can be used as a term of respect, and \"age\" can mean elder or senior. \"Jiheo\" is less clear without context, but it might be a name or a specific term. Given these pieces, a rough translation might be:\n\n### Emperor's minister respected elder jiheo ###\n\nPlease note that this translation is speculative and may not be accurate without more context or expertise in Manchu."
+  }
+]

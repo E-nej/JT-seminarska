@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsi ai jergi bithe be taqiha\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I will attempt to translate the provided Manchu sentence. Manchu is a Tungusic language, and while it is not as widely studied as some other languages, I'll use my knowledge to provide a translation.\n\nThe sentence \"si ai jergi bithe be taqiha\" can be broken down as follows:\n- \"si ai\" might refer to a specific person or role.\n- \"jergi\" could mean \"of the\" or \"belonging to.\"\n- \"bithe\" often refers to \"book\" or \"writing.\"\n- \"be\" can be a possessive marker.\n- \"taqiha\" might be a verb form indicating an action related to reading or studying.\n\nGiven these components, a tentative translation could be:\n### Someone's book is being read or studied. ###\n\nPlease note that this translation is based on a general understanding and might not be entirely accurate without more context or specialized knowledge in Manchu."
+  }
+]

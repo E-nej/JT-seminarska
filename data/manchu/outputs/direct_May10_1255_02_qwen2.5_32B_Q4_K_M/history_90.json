@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbooi jasigan tumen yan i aisin salimbi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "I will attempt to translate the given Manchu sentence to English. Manchu is a Tungusic language, and while it is not as widely studied as some other languages, I'll use my knowledge to provide a translation.\n\n### The given Manchu sentence \"booi jasigan tumen yan i aisin salimbi\" seems to contain elements that are not immediately clear without more context. However, breaking it down, \"booi\" could relate to a possessive form, \"jasigan\" might refer to a type of official or title, \"tumen\" could be a number or a unit of measurement, and \"yan i aisin\" might refer to a specific place or lineage. \"salimbi\" is less clear but could be a verb or an adjective. Given these elements, a rough translation might be something like \"the official's ten thousand of the Aisin lineage's wealth\" or \"the wealth of the Aisin lineage's ten thousand officials.\" This is speculative and would need verification with a Manchu language expert. ###"
+  }
+]

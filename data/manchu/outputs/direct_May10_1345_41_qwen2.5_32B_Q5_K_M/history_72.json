@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere emke hala Zhao mini adaki boo i guqu\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I'm not a Manchu language expert, but I can attempt a translation based on the structure and words provided. Manchu is a Tungusic language, and without a deep understanding of the context, the translation might not be entirely accurate. However, I'll give it a try:\n\n### ere emke hala Zhao mini adaki boo i guqu ###\n### Here, if Zhao is not present, then he is not here. ###\n\nPlease note that this translation is speculative and may not be accurate due to the complexity and specific context required for Manchu language translations."
+  }
+]

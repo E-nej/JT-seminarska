@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ntere guqu te amqame isinjimbioakvn\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I will attempt to translate the provided Manchu sentence. Manchu is a Tungusic language, and while it is not commonly spoken today, it has a rich written history. The sentence you provided seems to be in a phonetic transcription, which can sometimes make direct translation challenging without more context. However, I'll do my best with the knowledge available.\n\n### We are now in the process of investigation ###\n\nPlease note that this translation is speculative and may not be accurate without further context or specific knowledge of the sentence's intended meaning."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere yali urehe si amtalame\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I understand that you're looking for a translation from Manchu to English. Manchu is an endangered Tungusic language, and while I don't have a comprehensive knowledge of Manchu, I can attempt a translation based on the limited resources available.\n\nThe sentence \"ere yali urehe si amtalame\" seems to be a phrase that might relate to a location or a description of a place, but without more context, it's challenging to provide an accurate translation. Here's my attempt:\n\n### In this place, it is like this ###\n\nPlease note that this translation is speculative and may not be accurate due to the limited information and resources available for the Manchu language."
+  }
+]

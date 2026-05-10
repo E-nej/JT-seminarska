@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbe jugvn i unduri ishunde aqafi guqu arame gemun heqen de genembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "### I am attempting the translation based on the Manchu language knowledge. The sentence seems to be about a description or action related to a drum or a similar object. However, without a direct dictionary or more context, the translation might not be accurate. Here is my attempt: \"This drum's sound is like a rolling thunder.\" Please note that this is a speculative translation. ###"
+  }
+]

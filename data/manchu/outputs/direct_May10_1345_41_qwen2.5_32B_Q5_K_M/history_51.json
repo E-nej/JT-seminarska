@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ntuttu oqi umesi sain\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "I'm not a Manchu language expert, but I can attempt a translation based on the components of the sentence you've provided. \"Tuttu\" can mean \"quick\" or \"fast,\" \"oqi\" can refer to \"horse,\" and \"umesi\" might be related to \"month\" or \"time.\" \"Sain\" generally means \"good\" or \"well.\" Putting these together, a rough translation might be about a good or well-regarded fast horse or a good time/month. Given the limited context, here's my attempt:\n\n### Good fast horse ###\n\nPlease note that this translation is speculative and may not be accurate without more context or expertise in Manchu."
+  }
+]
