@@ -4,11 +4,16 @@ import sys
 import argparse
 from eval import run
 
-BASE_TRANSLATIONS = "data\\manchu\\laoqida.out"
-BASE_OUTPUTS = "data\\manchu\\outputs\\"
+BASE_TRANSLATIONS = os.path.join("data", "manchu", "laoqida.out")
+BASE_OUTPUTS = os.path.join("data", "manchu", "outputs")
 
-def run_eval(output_dir , start=0, end=None):
-    args = argparse.Namespace(output_dir=BASE_OUTPUTS+output_dir, ref=BASE_TRANSLATIONS, start=start, end=end)
+def run_eval(output_dir, start=0, end=None):
+    args = argparse.Namespace(
+        output_dir=os.path.join(BASE_OUTPUTS, output_dir),
+        ref=BASE_TRANSLATIONS,
+        start=start,
+        end=end
+    )
     buffer = io.StringIO()
     sys.stdout = buffer
     run(args)
