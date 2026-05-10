@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "\nHere are some examples of manchu sentences and their corresponding english translations:\nManchu: julge i ming gurun i forgon de emu lolo seme gaxan bihe\nEnglish: Long ago, in the Ming dynasty, there was a village called Lolo\nManchu: Budai faksi be buda arabume werifi sargudai fiyanggo geren ahasi sabe gaime ahalji bahalji sade afabume aba saraki alin xurdeme abalaki sefi\nEnglish: Sergudai Fiyanggo left the cook preparing meal, and took all the servants with him and ordered Ahalji and Bahalji, \u201cLet\u2019s spread out the battue line around the mountain and hunt.\u201d\nManchu: giran be gaime jurarengge oyonggo\nEnglish: Now it is important to bring his corpse home\n\nPlease help me translate the following sentence from manchu to english:\nte absi genembi\n\nYou are also given the word by word mapping from the manchu words to the english words.\nFor words that have partial match definitions, please decide whether the definition is appropriate under the sentence context.\nNote that for some words, there might be multiple possible translations. In this case, please choose the most appropriate one.\nNote that for some words, they might be derived from a more basic form, we call this the parent word. The parents are also given in the word by word translation.\nHere is the dictionary entry for each individual word in the source sentence:\n\n### te\nnow, at present\n### absi\n1. How? 2. Where to?, Whither? 3. What a \u2026 !, How \u2026 ! 4. How very \u2026 , very, extremely\n### genembi\nto go, to leave\n\n\nPlease first explain what each word means in english and then translate.\nRemember your source sentence is:\nte absi genembi.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ###Hello world###."
+  },
+  {
+    "role": "assistant",
+    "content": "Let's break down the sentence \"te absi genembi\" word by word:\n\n1. **te**: This word means \"now\" or \"at present\" in English. It sets the temporal context of the sentence.\n2. **absi**: This word has multiple meanings, including \"How?\", \"Where to?\", \"Whither?\", \"What a \u2026 !\", \"How \u2026 !\", and \"How very \u2026 , very, extremely\". Given the context of the sentence and the verb that follows, the most fitting translation here would be \"Where to?\" or \"Whither?\" as it seems to be asking about the direction or destination of the action.\n3. **genembi**: This word means \"to go\" or \"to leave\". It is the main verb of the sentence, indicating movement or departure.\n\nConsidering the context and the meanings of the individual words, the sentence \"te absi genembi\" can be translated as:\n\n###Now, where to go?### or ###Now, whither to go?###"
+  }
+]
