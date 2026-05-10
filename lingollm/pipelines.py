@@ -47,35 +47,8 @@ def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, g
     result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     messages.append({"role": "user", "content": "So, what's your translation of the sentence? I want ONLY your translation. For example, if your translation is 'Hello world', your output should be ###Hello world###. Make sure to only output the translation"})
-    messages.append({"role": "assistant", "content": "My translation is: ###"})
-    result = llm(messages)
-    messages[-1]['content'] = messages[-1]['content'] + result
-    return extract_enclosed_text(messages[-1]['content'], boundary="###"), messages
-    
-
-def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    messages = [
-        {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_direct_translate(src_lang, tgt_lang, sent)}
-    ]
-    result = llm(messages)
-    messages.append({"role": "system", "content": result})
-    return extract_enclosed_text(result), messages
-
-
-def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    messages = [
-        {"role": "system", "content": copy_prompt[0]["content"]},
-        {"role": "user", "content": copy_prompt[1]["content"]},
-    ]
-    messages[1]["content"] = messages[1]["content"].replace("Please enclose your translation in ###",  'Please enclose your translation in ###.\nFor example, if your translation is "Hello world", the last part of your output should be ####Hello world###')
-    messages[1]["content"] = messages[1]["content"].replace( "please translate the sentence into english and enclose your translation in ###",  'Please translate the sentence into english and enclose your translation in ###.\nFor example, if your translation is "Hello world", the last part of your output should be ###Hello world###')
     result = llm(messages)
     messages.append({"role": "assistant", "content": result})
-    messages.append({"role": "user", "content": "So, what's your translation of the sentence? I want ONLY your translation. For example, if your translation is 'Hello world', your output should be ###Hello world###. Make sure to only output the translation"})
-    messages.append({"role": "assistant", "content": "My translation is: ###"})
-    result = llm(messages)
-    messages[-1]['content'] = messages[-1]['content'] + result
     return extract_enclosed_text(messages[-1]['content'], boundary="###"), messages
     
     
@@ -85,33 +58,7 @@ def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss,
         {"role": "user", "content": prompt_direct_translate(src_lang, tgt_lang, sent)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
-    return extract_enclosed_text(result), messages
-
-
-def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    messages = [
-        {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_cot_translate(src_lang, tgt_lang, sent)}
-    ]
-    result = llm(messages)
-    messages.append({"role": "system", "content": result})
-    return extract_enclosed_text(result, boundary="###"), messages
-
-
-def direct_solve(src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
-    messages = [
-        {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_direct_solve(src_lang, tgt_lang, sent)}
-    ]
-    completion = openai.ChatCompletion.create(
-        model=MODEL_CKPT,
-        messages=messages,
-        top_p=0.5,
-    )   
-    result = completion.choices[0].message['content']
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
     
 
@@ -121,7 +68,7 @@ def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
         {"role": "user", "content": prompt_cot_translate(src_lang, tgt_lang, sent)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -137,7 +84,7 @@ def direct_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, dem
         top_p=0.5,
     )   
     result = completion.choices[0].message.content
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -148,7 +95,7 @@ def zeroshot_cot(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, dem
         {"role": "user", "content": prompt_zeroshot_cot(src_lang, tgt_lang, sent)}
     ] 
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -158,7 +105,7 @@ def fewshot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss
         {"role": "user", "content": prompt_fewshot_translate(src_lang, tgt_lang, sent, demo)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -169,7 +116,7 @@ def fewshot_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
         {"role": "user", "content": prompt_fewshot_solve(src_lang, tgt_lang, sent, demo)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -199,7 +146,7 @@ def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, d
         {"role": "user", "content": prompt_dict_translate(src_lang, tgt_lang, demo, sent, wordbyword)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result, boundary="###"), messages
 
 
@@ -240,39 +187,7 @@ def dict_translate_mask(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glo
         top_p=0.5,
     )
     result = completion.choices[0].message['content']
-    messages.append({"role": "system", "content": result})
-    return extract_enclosed_text(result), messages
-
-
-def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
-    vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
-    vdict = vdict(dict_fn, create_new_dict=False)
-    words = sent.split()
-    wordbyword = ""
-    i = 0
-    while i < len(words):
-        if i + 1 < len(words):
-            word = words[i] + " " + words[i + 1]
-            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":             
-                wres, key = vdict.match(word)
-                if word == key:
-                    wordbyword = wordbyword + word + ": " + wres + "\n"
-                    i += 2
-                    continue
-        wres, key = vdict.match(words[i])
-        wordbyword = wordbyword + words[i] + ": " + wres + "\n"
-        i += 1
-    
-    messages = [
-        {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar)}
-    ]
-
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target)  # vzame messages in po potrebi stisne user prompt (messages[1]["content"])
-
-    result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -305,7 +220,7 @@ def wordmap_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, 
         {"role": "user", "content": prompt_dict_translate(src_lang, tgt_lang, sent, wordbyword)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -337,7 +252,7 @@ def gloss_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, gr
         {"role": "user", "content": prompt_gloss_dict_translate(src_lang, tgt_lang, sent, gloss, wordbyword)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -372,7 +287,7 @@ def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dic
     messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
 
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -407,7 +322,7 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
     messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
 
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -444,7 +359,7 @@ def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glos
         top_p=0.5,
     )
     result = completion.choices[0].message['content']
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -454,7 +369,7 @@ def wordmap_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss
         {"role": "user", "content": prompt_wordmap_translate(src_lang, tgt_lang, sent, gloss)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -464,7 +379,7 @@ def gloss_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, 
         {"role": "user", "content": prompt_gloss_translate(src_lang, tgt_lang, sent, gloss)}
     ]
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -485,7 +400,7 @@ def gloss_translate_iter(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gl
         messages=messages
     )   
     result = completion.choices[0].message['content']
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     translation = extract_enclosed_text(result)
     all_messages.append(messages)
     
@@ -496,7 +411,7 @@ def gloss_translate_iter(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gl
             messages=messages
         )   
         result = completion.choices[0].message['content']
-        messages.append({"role": "system", "content": result})
+        messages.append({"role": "assistant", "content": result})
         translation = extract_enclosed_text(result)
         all_messages.append(messages)
         
@@ -513,7 +428,7 @@ def gloss_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn,
     messages = maybe_compress_messages(messages, sent, use_compression, compression_target)
 
     result = llm(messages)
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -531,7 +446,7 @@ def wordmap_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_f
         messages=messages
     )   
     result = completion.choices[0].message['content']
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
@@ -553,7 +468,7 @@ def gloss_grammar_chapter_by_chapter_translate(llm, copy_prompt, src_lang, tgt_l
         messages=messages
     )   
     result = completion.choices[0].message['content']
-    messages.append({"role": "system", "content": result})
+    messages.append({"role": "assistant", "content": result})
     translation = extract_enclosed_text(result)
     all_messages.append(messages)
     
@@ -568,7 +483,7 @@ def gloss_grammar_chapter_by_chapter_translate(llm, copy_prompt, src_lang, tgt_l
             messages=messages
         )   
         result = completion.choices[0].message['content']
-        messages.append({"role": "system", "content": result})
+        messages.append({"role": "assistant", "content": result})
         translation = extract_enclosed_text(result)
         all_messages.append(messages)
         
