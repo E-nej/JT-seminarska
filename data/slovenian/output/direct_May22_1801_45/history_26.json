@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nDo leta 1976 je bilo obnovljenih trideset odstotkov Machu Picchuja, obnova pa traja \u0161e danes.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I am happy to assist you with this translation. The Slovenian sentence describes the historical and ongoing restoration efforts at the site.\n\nHere is the translation:\n\n### By 1976, thirty percent of Machu Picchu had been restored, and the restoration continues to this day. ###"
+  }
+]

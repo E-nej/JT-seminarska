@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\n\u010ceprav so bile proge za vagone sestavljene zgolj iz vzporednih desk, so zaradi njih konji, ki so jih vlekli, lahko dosegli ve\u010dje hitrosti in vlekli ve\u010dja bremena kot na takratnih nekoliko slab\u0161ih cestah.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I have analyzed the structure and context of your Slovenian sentence. It describes the historical development of early wagonways (the precursors to railways).\n\nHere is the translation:\n\n### Although the wagon tracks were composed merely of parallel planks, they allowed the horses that pulled them to reach higher speeds and haul heavier loads than on the somewhat inferior roads of that time. ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nPoljski smu\u010dar z okvaro vida Maciej Krezel in spremljevalka Anna Ogarzynska sta bila trinajsta v superveleslalomu. Ju\u017enokorejski Jong Seork Park je bil \u0161tiriindvajseti v sede\u010dem superveleslalomu.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I am happy to assist you with this translation. Here is the English version of the text provided:\n\n### Polish visually impaired skier Maciej Krezel and his guide Anna Ogarzynska finished thirteenth in the super-G. South Korean Jong Seork Park was twenty-fourth in the sitting super-G. ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nKer dinozavrova peresa nimajo dobro razvitega tulca, ki ga imenujemo rebrce, imajo pa vse druge lastnosti peres \u2013 vejice in kavelj\u010dke \u2013 so raziskovalci ugotovili, da se je rebrce zelo verjetno razvilo pozneje v evoluciji kot ostale lastnosti.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I have analyzed the structure and terminology of your Slovenian sentence. The term \"rebrce\" in this context refers to the **rachis** (the central shaft of a feather).\n\nHere is the translation:\n\n### Because dinosaur feathers do not have a well-developed shaft, which we call the rachis, but possess all other characteristics of feathers\u2014barbs and barbules\u2014researchers have concluded that the rachis very likely evolved later in evolution than the other features. ###"
+  }
+]

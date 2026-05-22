@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nRekel je, da je izdelal brez\u017ei\u010dni hi\u0161ni zvonec.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "To translate the Slovenian sentence \"Rekel je, da je izdelal brez\u017ei\u010dni hi\u0161ni zvonec\" into English, we break it down as follows:\n\n*   **Rekel je**: He said\n*   **da je**: that he (has)\n*   **izdelal**: made / crafted / built\n*   **brez\u017ei\u010dni**: wireless\n*   **hi\u0161ni zvonec**: doorbell\n\nThe most natural translation is:\n\n### He said that he made a wireless doorbell. ###"
+  }
+]

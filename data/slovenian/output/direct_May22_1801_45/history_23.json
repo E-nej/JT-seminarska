@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nPonavadi imajo ve\u010d svobode kot navadni \u010dlani skupine, saj se morajo njihove skupine prilagajati ve\u010d \u010dasovnim pasovom, za kar njihovo lokalno vodstvo v\u010dasih nima posluha.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I am happy to assist you with this translation. The Slovenian sentence describes a situation where certain individuals (likely team leads or coordinators) have more autonomy because their teams operate across multiple time zones, a reality that local management sometimes fails to understand or accommodate.\n\nHere is the translation:\n\n### They usually have more freedom than regular group members, as their groups have to adapt to multiple time zones, something their local leadership sometimes lacks an ear for. ###"
+  }
+]

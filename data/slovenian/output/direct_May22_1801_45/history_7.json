@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nVse bolj priljubljena mo\u017enost za tiste, ki na\u010drtujejo leto premora med \u0161olanjem, je potovanje in u\u010denje.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I am happy to assist you with this translation. The Slovenian sentence \"Vse bolj priljubljena mo\u017enost za tiste, ki na\u010drtujejo leto premora med \u0161olanjem, je potovanje in u\u010denje\" can be translated into natural-sounding English as follows:\n\n### An increasingly popular option for those planning a gap year between studies is traveling and learning. ###"
+  }
+]

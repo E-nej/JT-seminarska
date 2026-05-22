@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nTo potrjuje \u017ee uveljavljeno teorijo, da so imeli vsaj nekateri dinozavri perje, hkrati pa zagotavlja tudi podatke, ki jih fosili navadno ne morejo, kot sta barva in tridimenzionalna razporeditev.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I am happy to assist you with this translation. The Slovenian sentence is well-structured and scientific in nature. Here is the translation:\n\n### This confirms the already established theory that at least some dinosaurs had feathers, while simultaneously providing data that fossils usually cannot, such as color and three-dimensional arrangement. ###"
+  }
+]

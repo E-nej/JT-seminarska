@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nsama jama, ki je pre\u017eivela preizkus \u010dasa, daje zelo jasno predstavo o Mohamedovih duhovnih te\u017enjah.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "To translate this sentence accurately, we must consider the context of the word \"jama\" (cave), which in this specific historical context refers to the Cave of Hira, where Muhammad is said to have received his first revelations.\n\nHere is the translation:\n\n### The very cave that has stood the test of time gives a very clear idea of Muhammad's spiritual aspirations. ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\nZa bolj\u0161o ponazoritev pretoka prometa so se uveljavila razmerja med glavnimi tremi zna\u010dilnostmi: (1) pretokom, (2) gostoto in (3) hitrostjo.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "To translate this sentence accurately, we must consider the technical context of traffic engineering. The terms \"pretok,\" \"gostota,\" and \"hitrost\" correspond to the fundamental variables of traffic flow theory.\n\nHere is the translation:\n\n### To better illustrate traffic flow, relationships between the three main characteristics have been established: (1) flow, (2) density, and (3) speed. ###"
+  }
+]

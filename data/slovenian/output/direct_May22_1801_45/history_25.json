@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\n\u0160tevilne obi\u010daje, ki priti\u010dejo temu prazniku, so prevzeli tudi neverniki iz kr\u0161\u010danskih dr\u017eav in nekristjani po celem svetu.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "To translate this sentence accurately, we must consider the nuance of the word \"priti\u010dejo\" (which implies customs that are appropriate or inherent to the holiday) and \"neverniki\" (which refers to non-believers or secular individuals).\n\nHere is the translation:\n\n### Many of the customs associated with this holiday have also been adopted by non-believers in Christian countries and by non-Christians all over the world. ###"
+  }
+]

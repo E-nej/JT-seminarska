@@ -1,0 +1,1 @@
+{"src_lang": "slovenian", "tgt_lang": "english", "pipeline_name": "direct_translate", "input_fn": "data/slovenian/flores.in", "dict_fn": "data/slovenian/dummy.db", "gloss_fn": "data/slovenian/flores.in", "grammar_fn": "data/slovenian/slovenian_grammar_sum.md", "iter": null, "llm": "gemini-3.1-flash-lite-preview", "copy_prompt": null}

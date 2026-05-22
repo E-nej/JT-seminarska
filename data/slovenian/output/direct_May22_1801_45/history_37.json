@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from slovenian to english:\n\u010ceprav je Goma dovolj varna, je treba izlete izven Gome raziskati, da se razume spopade, ki trajajo v provinci Severni Kivu.\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "assistant",
+    "content": "As a linguistic expert, I have analyzed the structure and context of your Slovenian sentence. The sentence discusses the security situation in Goma and the necessity of exploring surrounding areas to comprehend the ongoing regional conflicts.\n\nHere is the translation:\n\n### Although Goma is safe enough, trips outside of Goma must be researched in order to understand the conflicts that are ongoing in the North Kivu province. ###"
+  }
+]
