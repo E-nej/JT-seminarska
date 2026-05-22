@@ -1,1 +1,0 @@
-{"src_lang": "manchu", "tgt_lang": "english", "pipeline_name": "direct_translate", "input_fn": "data/manchu/laoqida.in", "dict_fn": "data/manchu/manchu_dict_laoqida_new.db", "gloss_fn": "data/manchu/laoqida.in", "grammar_fn": "", "iter": null, "llm": "gemini-3.1-flash-lite-preview", "copy_prompt": null}

@@ -211,7 +211,7 @@ def run(args):
                 with open(f'{output_dir}/output_{i}', 'w') as out:
                     out.write(res)
                 with open(f'{output_dir}/history_{i}.json', 'w') as out:
-                    out.write(json.dumps(messages, indent=2))
+                    out.write(json.dumps(messages, indent=2, ensure_ascii=False))
                     out.write('\n')
 
                 stats = _collect_stats(i, elapsed, llm)

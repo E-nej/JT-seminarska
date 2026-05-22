@@ -4,3 +4,4 @@ floresp-v2.0*
 openai.txt
 .venv
 .env
+outputs/

@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 import time
 import re
+import string
 from typing import Optional, List
 import editdistance # pip install editdistance
 from thefuzz import fuzz, process # pip install thefuzz
@@ -533,3 +534,45 @@ class Uspanteko_VDict(VDict):
 
 class Natugu_VDict(VDict):
     pass
+
+
+class Slovenian_VDict(VDict):
+    """Slovenian→English VDict using PONS online dictionary (en.pons.com)."""
+
+    def __init__(self, filename, initial_words: Optional[List] = None, create_new_dict=False):
+        super().__init__(filename, initial_words, create_new_dict)
+        self.driver = None
+
+    def _init_driver(self):
+        from selenium.webdriver.chrome.options import Options
+        options = Options()
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        self.driver = webdriver.Chrome(options=options)
+
+    def real_match(self, key):
+        if self.driver is None:
+            self._init_driver()
+        self.driver.get(f"https://en.pons.com/translate/slovenian-english/{key}")
+        time.sleep(1.5)
+        try:
+            targets = self.driver.find_elements(By.CLASS_NAME, "target")
+            results = []
+            for t in targets[:5]:
+                text = t.text.strip()
+                if text:
+                    results.append(text)
+            return "; ".join(results) if results else None
+        except Exception:
+            return None
+
+    def match(self, key):
+        key = key.strip().rstrip(string.punctuation).lower()
+        original = key
+        while len(key) > 1:
+            result = self.dict_match(key)
+            if result:
+                return result, key
+            key = key[:-1]
+        return "", original

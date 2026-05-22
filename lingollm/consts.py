@@ -8,6 +8,7 @@ from .vdict import (
     Arapaho_VDict,
     EnArapaho_VDict,
     WolofDict,
+    Slovenian_VDict,
 )
 
 import os
@@ -45,6 +46,7 @@ DICT_CLASSES = {
     "arapaho-english": Arapaho_VDict,
     "english-arapaho": EnArapaho_VDict,
     "wolof-english": WolofDict,
+    "slovenian-english": Slovenian_VDict,
 }
 
 MANCHU_GRAMMAR = """All Manchu phrases are head-final; the head-word of a phrase (e.g. the noun of a noun phrase, or the verb of a verb phrase) always falls at the end of the phrase. Thus, adjectives and adjectival phrases always precede the noun they modify, and the arguments to the verb always precede the verb. As a result, Manchu sentence structure is subject–object–verb (SOV).
