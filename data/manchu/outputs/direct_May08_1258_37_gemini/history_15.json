@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngeli ai xolo de nikan i gisun be mujakv sain i taqiha\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"geli ai xolo de nikan i gisun be mujakv sain i taqiha\"**, we must break down the components:\n\n*   **geli**: again / furthermore / also\n*   **ai**: what / which\n*   **xolo**: leisure / spare time\n*   **de**: at / in (locative particle)\n*   **nikan i gisun**: Chinese language (literally: \"Han's speech\")\n*   **be**: object marker\n*   **mujakv**: without difficulty / easily / fluently (from *muja* - to finish/end, with the negative suffix *-kv*)\n*   **sain i**: well / properly / goodly\n*   **taqiha**: learned / studied (past tense of *taqimbi*)\n\nPutting these together, the sentence conveys the idea of learning the Chinese language well and fluently during one's spare time.\n\n### Furthermore, in what spare time did you learn the Chinese language so well and fluently? ###"
+  }
+]

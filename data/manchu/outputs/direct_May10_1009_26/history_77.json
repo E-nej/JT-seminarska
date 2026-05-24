@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere uquri wesihun beye boode gemu sautvn?\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **ere**: this\n*   **uquri**: (This is a less common term, likely a variant or specific dialectal form related to *uqun* or *uqure*, often meaning \"to meet,\" \"to encounter,\" or in some contexts, \"the opposite/reverse\"). Given the structure, it functions as an adverbial or prepositional phrase here, likely meaning \"at this meeting\" or \"in this instance.\"\n*   **wesihun**: high, noble, exalted.\n*   **beye**: body, person, self.\n*   **boode**: in the house/at home.\n*   **gemu**: all, entirely, both.\n*   **sautvn**: This is a loanword from Chinese *sh\u00f2ut\u00e1ng* (\u58fd\u5802), meaning \"a hall for funeral rites\" or \"a mourning hall.\"\n\nPutting these together, the sentence describes a noble person being in a state of mourning or at a funeral hall.\n\n### Is this noble person entirely in the mourning hall at this meeting? ###"
+  }
+]

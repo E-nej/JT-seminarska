@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nuttu oqi sain kai muse sasari yoki dere\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"uttu oqi sain kai muse sasari yoki dere\"**, we must break down the components:\n\n*   **uttu**: thus, in this way\n*   **oqi**: if it is (conditional form of *ombi*)\n*   **sain**: good\n*   **kai**: an emphatic particle (often used to confirm a statement)\n*   **muse**: we (inclusive)\n*   **sasari**: a form related to *sasara* (to be separated/parted)\n*   **yoki**: a particle or variant indicating \"perhaps\" or \"it seems\"\n*   **dere**: a modal particle expressing conjecture or a softening of tone (often translated as \"it seems,\" \"I suppose,\" or \"might\")\n\nPutting these together, the sentence carries a sense of resignation or contemplative agreement regarding a separation. It translates roughly to: \"If it is thus, then it is good; it seems we must part.\"\n\n### If it is thus, then it is good; it seems we must part. ###"
+  }
+]

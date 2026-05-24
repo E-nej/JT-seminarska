@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbithe giyangname wajifi jai aibe kiqembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"bithe giyangname wajifi jai aibe kiqembi\"**, we must break down the grammatical components:\n\n*   **bithe**: book / text / document\n*   **giyangname**: from the verb *giyangnambi* (to explain/expound), used here as a converbum imperfectum (explaining)\n*   **wajifi**: from the verb *wajimbi* (to finish), used here as a converbum perfectum (having finished)\n*   **jai**: then / next / furthermore\n*   **aibe**: what (accusative case of *ai*)\n*   **kiqembi**: from the verb *kiqembi* (to strive for / to exert effort / to focus on)\n\nPutting these together, the sentence translates to: \"Having finished explaining the text, what shall [we/I] strive for next?\" or \"After finishing the explanation of the book, what is to be focused on next?\"\n\n### After finishing the explanation of the text, what shall be focused on next? ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nara boihoji age boode bi kai\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"ara boihoji age boode bi kai\"**, we must break down the components:\n\n*   **ara**: To write (imperative or stem form).\n*   **boihoji**: This appears to be a derivation related to *boiho* (a variant or dialectal form related to *boihon*, meaning \"to be written\" or \"writing\"). In some contexts, it functions as a conditional or a participle (\"if/when written\").\n*   **age**: Elder brother.\n*   **boode**: In the house (*boo* = house, *-de* = locative suffix).\n*   **bi**: To be / exist.\n*   **kai**: An emphatic particle used to assert a fact or provide assurance.\n\nSyntactically, the sentence suggests: \"If [it is] written, the elder brother is in the house, indeed.\" Or, depending on the specific dialectal usage of *boihoji*, it could be interpreted as: \"Regarding the writing, the elder brother is in the house.\"\n\nGiven the structure, a natural translation would be:\n\n### If it is written, the elder brother is in the house. ###"
+  }
+]

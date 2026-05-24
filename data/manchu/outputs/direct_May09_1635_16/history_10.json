@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsikse teni jihe\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"sikse teni jihe\"** into English, we must break down the components:\n\n*   **Sikse**: Yesterday.\n*   **Teni**: Only just, just now, or finally (often used to emphasize that an action occurred at a specific time or after a delay).\n*   **Jihe**: The past tense form of the verb *jimbi* (to come).\n\nWhen combined, the sentence conveys the sense that the arrival happened specifically yesterday, or perhaps emphasizes that the arrival occurred only as recently as yesterday.\n\n### Yesterday [he/she/it] just arrived ###"
+  }
+]

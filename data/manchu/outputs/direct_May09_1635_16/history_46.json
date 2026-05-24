@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nuttu oqi sain kai muse sasari yoki dere\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"uttu oqi sain kai muse sasari yoki dere\"**, we must break down the components:\n\n*   **uttu**: thus, in this way\n*   **oqi**: if it is (conditional form of *ombi*)\n*   **sain**: good\n*   **kai**: an emphatic particle (often used to express certainty or \"indeed\")\n*   **muse**: we (inclusive)\n*   **sasari**: This is likely a variant or dialectal form related to *sasari* (to know/recognize) or potentially a typo for *sasa* (together). Given the context of the sentence structure, it often appears in contexts implying \"knowing\" or \"being aware.\"\n*   **yoki**: a particle or suffix often used to express a sense of \"perhaps\" or \"it seems.\"\n*   **dere**: a modal particle indicating a supposition or a mild conclusion (\"it seems,\" \"I suppose\").\n\nSynthesizing these, the sentence conveys a sense of agreement or a reflective conclusion: \"If it is thus, it is indeed good; it seems we know [it/each other].\"\n\n### If it is thus, it is indeed good; it seems we know each other. ###"
+  }
+]

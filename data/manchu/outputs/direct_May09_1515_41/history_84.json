@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ndengjan dabufi gajiha, fajiran de lakiya\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "### The sentence translates to: \"when I saw him/her, he/she was wearing a hat. ###\n\nThis translation assumes that \"dabufi\" refers to a hat or head covering in Manchu, and \"gajiha\" means \"he/she was wearing.\" Please note that without more context, there could be slight variations in the exact meaning depending on the specific meanings of these words in the Manchu language."
+  }
+]

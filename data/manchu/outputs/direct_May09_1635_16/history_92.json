@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nqoko ilanggeri hvlafi abka gereme hamika\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"qoko ilanggeri hvlafi abka gereme hamika\"**, we must break down the morphology and syntax:\n\n1.  **qoko**: This is a variant or dialectal form of *goko* (or *g\u016bko*), which refers to a specific type of bird, often identified as a cuckoo or a similar bird associated with seasonal calls.\n2.  **ilanggeri**: *ilan* (three) + *-geri* (a suffix indicating frequency or repetition, meaning \"three times\").\n3.  **hvlafi**: *hvla-* (to call, to cry out, to read) + *-fi* (a conjunctive suffix indicating a completed action, \"having called\").\n4.  **abka**: Heaven, sky, or weather.\n5.  **gereme**: *gere-* (to change, to transform) + *-me* (a converbial suffix indicating simultaneous action or manner, \"changing\").\n6.  **hamika**: *hami-* (to be covered, to be overcast, to be cloudy) + *-ka* (a past tense or perfective marker).\n\nSynthesizing these elements, the sentence describes a sequence of events: the bird calls three times, and as it does so, the sky changes and becomes overcast.\n\n### The cuckoo having called three times, the sky changed and became overcast. ###"
+  }
+]

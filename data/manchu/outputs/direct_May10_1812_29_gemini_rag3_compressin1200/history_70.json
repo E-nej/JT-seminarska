@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere emke hala Gin mini gu de banjiha tara ahvn\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **ere**: this\n*   **emke**: one / a\n*   **hala**: clan / surname\n*   **Gin**: Gin (a surname, likely the Manchu transcription of the Chinese surname \"Jin\" \u91d1)\n*   **mini**: my\n*   **gu de**: in the valley (or possibly a phonetic transcription of a place name/location)\n*   **banjiha**: born / originated\n*   **tara**: (This is likely a suffix or a variation of *tala*, meaning \"from\" or \"at the\")\n*   **ahvn**: elder brother / relative\n\nSyntactically, the sentence describes the origin of a clan member. A literal interpretation would be: \"This one clan, Gin, was born in my valley, [my] elder brother.\"\n\nRefining this into natural English, it translates to:\n\n### This one clan, Gin, was born in my valley, elder brother. ###"
+  }
+]

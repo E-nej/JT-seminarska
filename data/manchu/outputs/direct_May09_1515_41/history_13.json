@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nabka gosifi beye elhe oqi isinambi dere\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "### The great king read this book with joy. ###\n\nThis translation assumes that:\n- \"abka\" means \"great\"\n- \"gosifi\" refers to a ruler or king\n- \"beye\" is used here as a form of address, similar to \"o prince\" in French\n- \"elhe oqi\" likely means \"read\" (in Manchu, verbs can sometimes be expressed through reduplication or context)\n- \"isinambi dere\" could mean \"with joy\" or \"joyfully,\" where \"dere\" is often used for emotions.\n\nPlease note that without a comprehensive dictionary and grammar guide specific to the Manchu language, this translation may not be entirely accurate."
+  }
+]

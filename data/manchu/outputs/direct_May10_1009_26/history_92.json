@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nqoko ilanggeri hvlafi abka gereme hamika\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"qoko ilanggeri hvlafi abka gereme hamika\"**, we must break down the morphology and syntax:\n\n1.  **qoko**: This is a variant or dialectal form of *goko* (or *g\u016bku*), which refers to a type of bird, often identified as a cuckoo or a similar avian species.\n2.  **ilanggeri**: *ilang* (three) + *-geri* (a suffix indicating frequency or repetition, meaning \"times\"). Thus, \"three times.\"\n3.  **hvlafi**: From the verb *hvlambi* (to call, to cry out, to read). The *-fi* suffix is a perfective converb, meaning \"having called.\"\n4.  **abka**: Sky or heaven.\n5.  **gereme**: From the verb *gerembi* (to imitate, to resemble, to mimic). The *-me* suffix is an imperfective converb, indicating an action happening simultaneously or as a manner of the main verb.\n6.  **hamika**: From the verb *hamimbi* (to cover, to shroud, to envelop). The *-ka* suffix indicates a past tense or completed state.\n\nPutting this together, the sentence describes a bird calling three times while the sky is being covered or shrouded (perhaps by clouds or darkness).\n\n### The cuckoo having called three times, the sky was covered ###"
+  }
+]

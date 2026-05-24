@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere emke hala Zhao mini adaki boo i guqu\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"ere emke hala Zhao mini adaki boo i guqu\"**, we can break it down as follows:\n\n*   **ere**: this\n*   **emke**: one / a\n*   **hala**: surname / clan name\n*   **Zhao**: Zhao (the Chinese surname)\n*   **mini**: my\n*   **adaki**: neighbor / next-door\n*   **boo**: house / home\n*   **i**: possessive particle (linking \"house\" to \"friend\")\n*   **guqu**: friend\n\nPutting these together, the sentence translates to: \"This person with the surname Zhao is my neighbor's friend.\"\n\n### This person with the surname Zhao is my neighbor's friend ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nmuse genefi aibide tataqi sain\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"muse genefi aibide tataqi sain\"**, we must break down the components:\n\n*   **muse**: we (inclusive)\n*   **genefi**: having gone (from the verb *gene-* \"to go\", with the perfective converb suffix *-fi*)\n*   **aibide**: where (interrogative pronoun *aibi* + locative suffix *-de*)\n*   **tataqi**: to pull/to draw/to lead (the *-qi* suffix here often indicates purpose or a future-oriented action, functioning similarly to \"where should we pull/go to\")\n*   **sain**: good\n\nSyntactically, the sentence asks for a suggestion regarding a destination or a course of action. A literal translation would be \"Having gone, where is it good to pull [our path/ourselves]?\" In a more natural English context, this translates to asking where it would be best to go.\n\n### Where should we go? ###"
+  }
+]

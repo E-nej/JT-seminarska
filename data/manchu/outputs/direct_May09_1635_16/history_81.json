@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbe jugvn i unduri ishunde aqafi guqu arame gemun heqen de genembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **be**: We (inclusive).\n*   **jugvn i unduri**: Literally \"on the road's middle/midst,\" meaning \"on the way\" or \"along the journey.\"\n*   **ishunde aqafi**: \"Having met each other\" (from *aqambi*, to meet).\n*   **guqu arame**: \"Making friends\" or \"becoming friends\" (from *guqu*, friend, and *arambi*, to make/do).\n*   **gemun heqen de**: \"To the capital city\" (*gemun* is an older or specific term for capital/main city, *heqen* is city/wall, *de* is the dative suffix).\n*   **genembi**: \"We are going\" (from *genembi*, to go).\n\nSynthesizing these, the sentence describes a journey where the subjects meet, form a friendship, and travel together to the capital.\n\n### We met on the road, became friends, and are going to the capital city. ###"
+  }
+]

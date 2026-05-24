@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbooi jasigan tumen yan i aisin salimbi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"booi jasigan tumen yan i aisin salimbi\"**, we must break down the components:\n\n*   **booi**: genitive form of *boo* (house/family), meaning \"of the house\" or \"household.\"\n*   **jasigan**: This is a somewhat rare or archaic term, but in various contexts, it refers to \"tax,\" \"tribute,\" or \"revenue.\"\n*   **tumen**: \"ten thousand\" (often used to mean \"myriad\" or \"countless\").\n*   **yan**: A loanword from Chinese (*y\u00edn*), meaning \"silver\" or \"taels.\"\n*   **i**: Genitive particle.\n*   **aisin**: \"gold.\"\n*   **salimbi**: The present tense of the verb *sambi*, meaning \"to pay,\" \"to offer,\" or \"to deliver.\"\n\nPutting these together, the sentence describes the payment of gold and silver as household tax or tribute.\n\n### The household pays ten thousand taels of gold and silver in tax. ###"
+  }
+]

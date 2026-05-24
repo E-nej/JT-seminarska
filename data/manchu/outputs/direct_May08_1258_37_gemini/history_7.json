@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nemu guqu tutafi jimeofi bi elhexeme aliyakiyame yabure jakade tuttu jime goidaha\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the grammatical components:\n\n*   **emu guqu**: a friend\n*   **tutafi**: having left/stopped (from *tumbi*)\n*   **jimeofi**: having come (from *jimbi*)\n*   **bi**: I\n*   **elhexeme**: leisurely, slowly, in a relaxed manner\n*   **aliyakiyame**: waiting expectantly/watching for (from *aliyakimbi*)\n*   **yabure jakade**: while/at the time of walking/acting (from *yabumbi*)\n*   **tuttu**: thus, in that way\n*   **jime**: coming\n*   **goidaha**: was a long time (from *goidambi*)\n\nSynthesizing these, the sentence describes a situation where the speaker was waiting for a friend who had left and then arrived, and because the speaker was waiting in a leisurely manner, the process took a long time.\n\n### After a friend left and came back, while I was waiting for them in a leisurely manner, it took a long time for them to arrive like that. ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere uquri wesihun beye boode gemu sautvn?\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **ere**: this\n*   **uquri**: (This is a less common term, likely a variant or specific dialectal form related to *uqun* or *uquri*, often implying \"opposite,\" \"counter,\" or \"this time/instance\")\n*   **wesihun**: high, noble, exalted\n*   **beye**: body, person, self\n*   **boode**: in the house/home\n*   **gemu**: all, entirely\n*   **sautvn**: (This appears to be a phonetic transcription or a specific term. In Manchu, *sautvn* is not a standard dictionary word, but it closely resembles the transliteration of the Chinese term *sh\u01ceot\u00fan* (\u5c11\u5c6f), or potentially a misreading of *sutun* or a related loanword).\n\nGiven the structure, the sentence asks about the presence or status of a noble person within the household.\n\n### Is this noble person entirely at home this time? ###"
+  }
+]

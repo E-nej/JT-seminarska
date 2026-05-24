@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere yali urehe si amtalame\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"ere yali urehe si amtalame\"**, we must break down the components:\n\n*   **ere**: this\n*   **yali**: meat / flesh\n*   **urehe**: past participle of *urembi* (to ripen, to cook, to mature). In this context, it refers to \"cooked\" or \"ripened\" meat.\n*   **si**: you\n*   **amtalame**: adverbial form of *amtangga* (tasty, delicious), meaning \"tastily\" or \"with enjoyment.\"\n\nPutting these together, the sentence structure suggests: \"You [eat] this cooked meat tastily.\" (Note: Manchu often drops the verb \"to eat\" when the context of the meat is clear).\n\n### You eat this cooked meat with enjoyment ###"
+  }
+]

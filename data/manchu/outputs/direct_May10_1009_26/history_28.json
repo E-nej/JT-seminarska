@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nmeni ama eniye taqi sehe kai\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"meni ama eniye taqi sehe kai\"**, we must break down the components:\n\n*   **meni**: our (genitive case of *muse*, meaning \"we/us\").\n*   **ama**: father.\n*   **eniye**: mother.\n*   **taqi**: This is a slightly ambiguous term in Manchu. It is often associated with the verb *taqimbi*, which can mean \"to learn,\" \"to study,\" or \"to follow/obey.\" In some contexts, it can also refer to a specific manner or state of being.\n*   **sehe**: said (past tense of *sembi*).\n*   **kai**: an emphatic particle used to assert a fact or emphasize the preceding statement (often translated as \"indeed,\" \"you see,\" or simply used to mark a definitive statement).\n\nGiven the structure, the sentence translates to:\n\n### Our father and mother said so, indeed. ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nandase sain dedu\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"andase sain dedu\"**, we must break down the components:\n\n*   **andase**: This is the plural form of *anda* (friend/sworn brother). The suffix *-se* is a plural marker. So, \"friends.\"\n*   **sain**: This is an adjective meaning \"good,\" \"well,\" or \"virtuous.\"\n*   **dedu**: This is the locative case of *de* (at/in) combined with the demonstrative *du* (there/that place). In this context, it functions as \"in a good place\" or \"at a good time/state.\"\n\nSyntactically, this phrase functions as a blessing or a statement of well-being, often used to wish someone safety or to describe a state of harmony among friends.\n\n### May friends be in a good place ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi qoohiyan i niyalma nikan i bade feliyeme urehe akv\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **bi**: I\n*   **qoohiyan**: (This is a loanword from Chinese *g\u016bniang* \u59d1\u5a18), meaning \"girl\" or \"young woman.\"\n*   **i**: Genitive particle (possessive).\n*   **niyalma**: Person.\n*   **nikan**: Chinese (or Han).\n*   **i**: Genitive particle.\n*   **bade**: In the place of.\n*   **feliyeme**: From *feliye-*, meaning to travel, wander, or roam.\n*   **urehe**: Past participle of *ure-*, meaning to learn or study.\n*   **akv**: Not/did not (negative existential).\n\nPutting this together, the sentence describes the speaker's experience (or lack thereof) regarding living or studying in a Chinese environment as a young woman.\n\n### I, as a young woman, have not learned by wandering in the land of the Chinese. ###"
+  }
+]

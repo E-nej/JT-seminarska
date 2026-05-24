@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nabka gosifi beye elhe oqi isinambi dere\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"abka gosifi beye elhe oqi isinambi dere\"**, we must break down the components:\n\n*   **abka**: Heaven / Sky\n*   **gosifi**: (from the verb *gosimbi* - to pity, to love, to show grace) having shown grace / having pitied\n*   **beye**: body / self\n*   **elhe**: peaceful / healthy / well\n*   **oqi**: (conditional form of *ombi* - to be) if it is / if one is\n*   **isinambi**: (from *isinambi* - to arrive / to be enough / to suffice) it is enough / it suffices\n*   **dere**: (modal particle) indicates a supposition or a reflective thought (\"it seems,\" \"I suppose,\" \"it is likely\").\n\nSynthesizing these, the sentence expresses a humble, traditional sentiment regarding well-being and divine favor.\n\n### If Heaven shows grace and one is healthy, that is enough. ###"
+  }
+]

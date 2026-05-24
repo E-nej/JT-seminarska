@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ninenggidari nikan i xusai emgi emu bade tefi bithe taqiha turgunde majige bahanambi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we first break down the components:\n\n*   **inenggidari**: daily / every day\n*   **nikan i xusai**: Chinese person (nikan = Chinese, xusai = person/man)\n*   **emgi**: with / together with\n*   **emu bade**: in one place / together\n*   **tefi**: sitting (gerund of *te-*)\n*   **bithe taqiha**: studied books (bithe = book, taqiha = studied/learned)\n*   **turgunde**: because of / due to the fact that\n*   **majige**: a little / somewhat\n*   **bahanambi**: (I) am able to / know (how to)\n\nPutting these together, the sentence describes the speaker's experience of learning Chinese by sitting and studying with a Chinese person daily.\n\n### Because I sat and studied books together with a Chinese person every day, I am able to do a little bit. ###"
+  }
+]

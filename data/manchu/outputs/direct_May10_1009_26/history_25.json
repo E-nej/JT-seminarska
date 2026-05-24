@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsi tere nikan i bithe be taqifi ainambi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"si tere nikan i bithe be taqifi ainambi\"**, we must break down the components:\n\n*   **si**: you\n*   **tere**: that\n*   **nikan**: Chinese (or Han)\n*   **i**: possessive particle (of)\n*   **bithe**: book\n*   **be**: object marker\n*   **taqifi**: having read/studied (from the verb *taqimbi*)\n*   **ainambi**: what are you doing? / what is the use? (from *ainambi*, \"to do what\")\n\nPutting this together, the sentence carries the sense of \"What is the point of you having read that Chinese book?\" or \"What are you doing having read that Chinese book?\"\n\n### What is the point of you having read that Chinese book? ###"
+  }
+]

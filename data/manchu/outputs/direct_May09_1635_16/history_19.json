@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi nikan i taqikv de bithe taqiha\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"bi nikan i taqikv de bithe taqiha\"**, we can break it down morphologically:\n\n*   **bi**: I\n*   **nikan**: Chinese (or Han)\n*   **i**: possessive particle (of)\n*   **taqikv**: school (from the verb *taqi-* \"to learn/teach\" + the suffix *-kv* denoting a place)\n*   **de**: locative particle (at/in)\n*   **bithe**: book\n*   **taqiha**: learned/studied (past tense of *taqi-*)\n\nPutting these together, the sentence translates to: \"I studied books at the Chinese school.\"\n\n### I studied books at the Chinese school ###"
+  }
+]

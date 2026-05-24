@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi gemun heqen i baru genembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"bi gemun heqen i baru genembi\"**, we can break it down as follows:\n\n*   **bi**: I\n*   **gemun**: permanent, fixed, or main (often used in the context of a \"capital city\" or \"main city\")\n*   **heqen**: city, wall, or fortress\n*   **i**: possessive/attributive particle\n*   **baru**: towards, in the direction of\n*   **genembi**: to go (present tense)\n\nCombining these, the sentence translates to \"I am going towards the main city\" or \"I am going to the capital city.\"\n\n### I am going to the main city ###"
+  }
+]

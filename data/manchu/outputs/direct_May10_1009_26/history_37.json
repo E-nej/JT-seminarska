@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsithvme taqibumbio sithvme taqiburakvn\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must first look at the morphology of the words:\n\n1.  **sithvme**: This is the converb form of the verb *sithv-* (to be quiet, silent, calm). The *-me* suffix indicates a simultaneous action or a state, often translated as \"quietly\" or \"while being quiet.\"\n2.  **taqibumbio**: This is the verb *taqimbi* (to learn/study) in the causative form (*taqibumbi* - to cause to learn/to teach) followed by the interrogative suffix *-o*.\n3.  **taqiburakvn**: This is the negative form of the causative verb (*taqibumbi*). *Taqibura* is the negative imperfective participle, and *-kvn* is an interrogative particle often used to seek confirmation or express doubt (similar to \"is it not?\").\n\nSyntactically, the sentence functions as a parallel contrastive question.\n\n### Are you teaching [them] quietly, or are you not teaching [them] quietly? ###"
+  }
+]

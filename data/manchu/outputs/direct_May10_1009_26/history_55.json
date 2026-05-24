@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nmorin hvda ere uquri sain\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"morin hvda ere uquri sain\"**, we must first break down the vocabulary:\n\n*   **morin**: horse\n*   **hvda**: price / value\n*   **ere**: this\n*   **uquri**: time / occasion / moment\n*   **sain**: good\n\nPutting these together, the sentence literally translates to \"The horse's price [is] good at this time.\" In a more natural English context, this refers to the market value of the horse being favorable at the current moment.\n\n### The price of the horse is good at this time ###"
+  }
+]

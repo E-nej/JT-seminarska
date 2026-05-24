@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere uquri wesihun beye boode gemu sautvn?\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **ere**: this\n*   **uquri**: opposite / across / facing\n*   **wesihun**: high / noble / exalted\n*   **beye**: body / person / self\n*   **boode**: in the house (boo + de)\n*   **gemu**: all / entirely\n*   **sautvn**: This is a less common term, likely a phonetic transcription or a variant of a loanword (possibly related to the Chinese *sh\u00f2ut\u00e1ng* \u58fd\u5802, meaning a hall for funeral rites or ancestral veneration).\n\nSynthesizing these, the sentence refers to the presence of noble or high-ranking individuals within a specific ceremonial space.\n\n### Are all the noble people in the house for the funeral rites? ###"
+  }
+]

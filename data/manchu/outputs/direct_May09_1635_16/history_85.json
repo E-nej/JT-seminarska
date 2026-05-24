@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nduleke aniya qi ebsi abka hiya ofi, usin jeku bargiyahakv aniya haji\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **duleke aniya qi ebsi**: \"Since last year\" (duleke = past/last; aniya = year; qi ebsi = from/since).\n*   **abka hiya ofi**: \"Because the weather has been bad/unfavorable\" (abka = weather/sky; hiya = bad/ill; ofi = because/being).\n*   **usin jeku**: \"Field crops/grain\" (usin = field; jeku = grain/rice).\n*   **bargiyahakv aniya**: \"A year of not harvesting/gathering\" (bargiya- = to gather/harvest; -hakv = negative suffix; aniya = year).\n*   **haji**: This is likely a phonetic representation or a variant of *haji* (to be anxious/distressed) or perhaps a truncated form related to the state of the harvest.\n\nSynthesizing these, the sentence describes a period of agricultural hardship caused by poor weather.\n\n### Since last year, because the weather has been bad, it has been a year of no harvest, and I am distressed. ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nnikan i gisun be majige bahanambi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "### The man who saw me did not believe me ###\nThis translation assumes that \"nikan\" means \"man,\" \"i gisun\" translates to \"who saw me,\" and \"be majige bahanambi\" means \"did not believe me.\" Please note that without a comprehensive Manchu dictionary or expert, there might be nuances lost in the translation. ### nik\u0430\u043d i \u0433\u0438\u0441\u0443\u043d be \u043c\u0430\u0439\u0436\u0435 \u0431\u0430\u0445\u0430\u043dambi ###"
+  }
+]

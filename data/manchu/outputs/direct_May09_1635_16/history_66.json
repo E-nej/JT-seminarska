@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi inu duleke aniya tubade tataha bihe umesi sain\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence \"bi inu duleke aniya tubade tataha bihe umesi sain,\" we can break it down morphologically:\n\n*   **bi**: I\n*   **inu**: also / indeed\n*   **duleke aniya**: last year (literally: \"passed year\")\n*   **tubade**: there (at that place)\n*   **tataha**: stayed / resided (past participle of *tata-*)\n*   **bihe**: was (past tense marker)\n*   **umesi**: very\n*   **sain**: good\n\nPutting these together, the sentence translates to: \"I also stayed there last year; it was very good.\"\n\n### I also stayed there last year; it was very good. ###"
+  }
+]

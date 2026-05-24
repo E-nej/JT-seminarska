@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsini hendurengge inu mini mujilen de inu uttu gvnihabi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"sini hendurengge inu mini mujilen de inu uttu gvnihabi\"**, we can break it down morphologically:\n\n*   **sini**: your\n*   **hendurengge**: what (you) are saying / your saying\n*   **inu**: indeed / truly / is (affirmative particle)\n*   **mini**: my\n*   **mujilen de**: in (my) heart\n*   **inu**: indeed / truly\n*   **uttu**: thus / in this way\n*   **gvnihabi**: (I) have thought / am thinking\n\nPutting this together, the sentence expresses a sentiment of agreement or shared feeling: \"What you are saying is true; in my heart, I have also thought the same way.\"\n\n### What you are saying is true; I have thought the same in my heart ###"
+  }
+]

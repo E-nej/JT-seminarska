@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngemu bahanambio bahanarakvn\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "### The sentence \"gemu bahanambio bahanarakvn\" appears to be a Manchu phrase. However, without context or more information about the exact structure and meaning, it's challenging to provide an accurate translation. Based on the components:\n\n- \"gemu\" could refer to \"water\"\n- \"bahanambio\" might mean \"big fish\" or \"great fish\"\n- \"bahanarakvn\" seems to be a verb form possibly related to action\n\nGiven these assumptions, a rough translation could be something like: \"The big fish are swimming in the water.\" \n\n### The big fish are swimming in the water ###"
+  }
+]

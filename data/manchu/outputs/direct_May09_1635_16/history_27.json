@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\neiqi sini ama eniye taqi sembio\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"eiqi sini ama eniye taqi sembio\"**, we must break down the components:\n\n*   **eiqi**: This is a particle often used to express doubt, uncertainty, or a rhetorical \"perhaps\" or \"could it be that.\"\n*   **sini**: The genitive form of the pronoun \"si\" (you), meaning \"your.\"\n*   **ama**: Father.\n*   **eniye**: Mother.\n*   **taqi**: This is likely a variation or dialectal form related to *taqilambi* (to learn/study) or *taqambi* (to teach). In this context, it functions as a verb stem.\n*   **sembio**: A combination of *se* (to say/think) and *-mbio* (an interrogative suffix), meaning \"do you say?\" or \"is it thought that?\"\n\nPutting these together, the sentence carries the sense of questioning whether one's parents are being taught or are learning something.\n\n### Could it be that your father and mother are learning? ###"
+  }
+]

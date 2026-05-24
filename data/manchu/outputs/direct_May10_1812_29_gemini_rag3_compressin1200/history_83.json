@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nboihoji dengjan dabufi gaju\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"boihoji dengjan dabufi gaju\"**, we must break down the components:\n\n*   **boihoji**: This is derived from *boiho* (to request, to ask for, to beg). The suffix *-ji* functions as a converbum (a connective form), meaning \"having requested\" or \"by requesting.\"\n*   **dengjan**: This is a loanword from Chinese *d\u0113ngzh\u01cen* (\u706f\u76cf), meaning \"lamp\" or \"oil lamp.\"\n*   **dabufi**: This comes from the verb *dabumbi* (to take, to fetch, to bring along). The suffix *-fi* is a perfective converbum, meaning \"having taken\" or \"after taking.\"\n*   **gaju**: This is the imperative form of the verb *gambi* (to bring/to take), meaning \"bring it here.\"\n\nPutting these together, the sentence describes a sequence of actions: requesting (or perhaps \"by way of a request\"), taking the lamp, and bringing it.\n\n### Having requested, take the lamp and bring it here ###"
+  }
+]

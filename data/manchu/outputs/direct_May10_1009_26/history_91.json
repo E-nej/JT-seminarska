@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nqoko hvlaha manggi ilifi uthai yabuki\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"qoko hvlaha manggi ilifi uthai yabuki\"**, we must break down the grammatical components:\n\n*   **qoko**: This is a demonstrative pronoun meaning \"this\" (specifically referring to something near the speaker).\n*   **hvlaha**: This is the past participle of the verb *hvla-* (to read), meaning \"read.\"\n*   **manggi**: This is a temporal suffix meaning \"after\" or \"when.\"\n*   **ilifi**: This is the converbum perfectum of the verb *ili-* (to stand up), meaning \"having stood up.\"\n*   **uthai**: An adverb meaning \"immediately,\" \"at once,\" or \"right away.\"\n*   **yabuki**: This is the optative/imperative form of the verb *yabu-* (to go/walk), meaning \"let [someone] go\" or \"should go.\"\n\nPutting these together, the sentence translates to: \"After reading this, stand up and go immediately.\"\n\n### After reading this, stand up and go immediately ###"
+  }
+]

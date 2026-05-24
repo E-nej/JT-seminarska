@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsi qoohiyan i niyalma kai\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"si qoohiyan i niyalma kai\"**, we must break down the components:\n\n*   **si**: \"you\" (second-person singular pronoun).\n*   **qoohiyan**: This is a loanword from Chinese *qu\u00e1n* (\u6b0a), often used in Manchu to mean \"power,\" \"authority,\" or \"influence.\"\n*   **i**: The genitive particle (possessive marker), meaning \"of.\"\n*   **niyalma**: \"person\" or \"man.\"\n*   **kai**: An emphatic particle used at the end of a sentence to assert a fact or emphasize the preceding statement (often translated as \"indeed,\" \"it is that,\" or simply providing a declarative tone).\n\nPutting these together, the phrase literally translates to \"You are a person of power/authority.\"\n\n### You are a person of authority ###"
+  }
+]

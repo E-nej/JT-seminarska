@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nniyalma hetu ulin be baharakv oqi bayan ojorakv sehebi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"niyalma hetu ulin be baharakv oqi bayan ojorakv sehebi\"**, we can break it down as follows:\n\n*   **niyalma**: person / people\n*   **hetu**: side / sideways / oblique (often used in the context of \"extra\" or \"side\" income)\n*   **ulin**: wealth / property / money\n*   **be**: object marker\n*   **baharakv**: do not obtain / do not get (negative form of *bahambi*)\n*   **oqi**: if\n*   **bayan**: rich / wealthy\n*   **ojorakv**: will not become (negative form of *ojombi*)\n*   **sehebi**: it is said / they say (evidential marker)\n\nSynthesizing these parts, the sentence translates to the proverb: \"It is said that if a person does not obtain side income, they will not become wealthy.\"\n\n### It is said that if a person does not obtain side income, they will not become wealthy. ###"
+  }
+]

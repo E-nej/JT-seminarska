@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi yali qolame bahanarakv\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"bi yali qolame bahanarakv\"**, we must break down the components:\n\n*   **bi**: I\n*   **yali**: meat / flesh\n*   **qolame**: the converb form of *qolambi* (to distribute, to divide, to share, or to serve).\n*   **bahanarakv**: the negative form of *bahanambi* (to be able to, to manage to, to obtain).\n\nIn this context, *yali qolambi* refers to the act of serving or distributing meat (often in a ritual or communal meal context). The negative construction *bahanarakv* indicates an inability to perform the action.\n\nTherefore, the sentence translates to: \"I am unable to serve the meat.\"\n\n### I am unable to serve the meat ###"
+  }
+]

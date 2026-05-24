@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsi atanggi wangging qi juraka\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"si atanggi wangging qi juraka\"**, we must break down the components:\n\n*   **si**: you\n*   **atanggi**: when\n*   **wangging**: This is a slightly unusual form, likely derived from the verb *wanggi-* (to be weary/tired/bored). In this context, it functions as a verbal noun or adverbial modifier indicating a state of weariness.\n*   **qi**: from (ablative particle)\n*   **juraka**: departed/left (past tense of *jura-*)\n\nPutting these together, the sentence literally translates to \"When did you depart from being weary?\" or, more idiomatically, \"When did you get over your weariness?\" or \"When did you stop being tired?\"\n\n### When did you stop being weary? ###"
+  }
+]

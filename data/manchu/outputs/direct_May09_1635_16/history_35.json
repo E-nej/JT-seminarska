@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nse udu oho\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"se udu oho\"**, we must break down the components:\n\n*   **se**: This is the verb *se-mbi*, meaning \"to say.\" In this context, it functions as a particle or a connector often used to introduce a state or a duration.\n*   **udu**: This is an interrogative or indefinite pronoun meaning \"how many\" or \"some/several.\"\n*   **oho**: This is the past tense of the verb *o-mbi*, meaning \"to become\" or \"to be.\"\n\nWhen combined, \"se udu oho\" is a common idiomatic expression used to denote the passage of time or the completion of a certain duration. It is frequently translated as \"some time has passed\" or \"however much time has passed.\"\n\n### Some time has passed ###"
+  }
+]

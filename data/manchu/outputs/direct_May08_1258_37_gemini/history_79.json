@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngoidame aqahakv bihe\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"goidame aqahakv bihe\"**, we must break down the components:\n\n1.  **goidame**: From the verb *goidambi* (to be long in time, to delay). The *-me* suffix functions as a converb, often meaning \"for a long time\" or \"while delaying.\"\n2.  **aqahakv**: This is the negative form of the past participle of *aqambi* (to meet, to encounter). *Aqa-* (to meet) + *-ha* (past participle suffix) + *-kv* (negative suffix). Thus, \"not met.\"\n3.  **bihe**: The past tense of the verb *bi* (to be). It functions here as an auxiliary verb indicating a past state.\n\nPutting these together, the sentence describes a state of not having met for a long time.\n\n### We had not met for a long time ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nere emu jergi morin juwan yan salimbi sere\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"ere emu jergi morin juwan yan salimbi sere\"**, we must break down the components:\n\n*   **ere**: this\n*   **emu jergi**: one rank / one class / one category\n*   **morin**: horse\n*   **juwan**: ten\n*   **yan**: (a loanword from Chinese *y\u00e1n* \u5713, referring to a unit of currency, often translated as \"yuan\" or \"dollar\")\n*   **salimbi**: (from the verb *salimbi*, meaning to pay, to settle a debt, or to give in exchange)\n*   **sere**: (the participle form of *sembi*, meaning \"to say\" or \"to be called,\" often used here to mean \"which is\" or \"saying that\")\n\nPutting this together, the sentence describes a transaction or a valuation: \"This one-rank horse costs ten yuan.\"\n\n### This one-rank horse costs ten yuan ###"
+  }
+]

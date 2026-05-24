@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nyasai juleri ere uthai wase diyan\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"yasai juleri ere uthai wase diyan\"**, we must break down the components:\n\n*   **yasai**: The genitive form of *yasa* (eye), meaning \"of the eye\" or \"in front of the eye.\"\n*   **juleri**: \"In front of,\" \"before,\" or \"ahead.\"\n*   **ere**: \"This.\"\n*   **uthai**: \"Immediately,\" \"exactly,\" or \"precisely.\"\n*   **wase**: This is likely a phonetic rendering or a specific term (possibly related to *wase*, a type of official or spirit, or a loanword).\n*   **diyan**: A loanword from Chinese *di\u00e0n* (\u5e97), meaning \"shop\" or \"store.\"\n\nSyntactically, the sentence suggests a location or a specific point of reference. A literal interpretation would be: \"In front of the eyes, this is precisely the [wase] shop.\"\n\n### In front of the eyes, this is precisely the wase shop ###"
+  }
+]

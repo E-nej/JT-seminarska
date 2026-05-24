@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nwang hala amba age jiheo\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence \"wang hala amba age jiheo\" into English, we must break down the components:\n\n*   **wang**: A surname (often corresponding to the Chinese surname Wang).\n*   **hala**: Surname/clan name.\n*   **amba**: Big, great, or elder.\n*   **age**: Elder brother or a respectful term for a young nobleman/gentleman.\n*   **jiheo**: This is a combination of the verb *ji* (to come) and the interrogative particle *o* (used for questions).\n\nSyntactically, \"wang hala\" functions as an identifier (of the Wang clan), \"amba age\" is the subject (the great elder brother), and \"jiheo\" is the interrogative verb.\n\n### Has the great elder brother of the Wang clan come? ###"
+  }
+]

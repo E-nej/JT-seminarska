@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ninenggidari gersi fersi de ilifi taqikv de genefi sefu de bithe taqimbi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **inenggidari**: daily / every day\n*   **gersi fersi de**: (This appears to be a phonetic rendering or a specific locative construction; *gersi* often relates to \"early morning\" or \"dawn,\" and *fersi* is likely a variation or related temporal marker).\n*   **ilifi**: having stood up / rising\n*   **taqikv de**: at the school (*taqikv* is a variant of *taqik\u016b*)\n*   **genefi**: having gone\n*   **sefu de**: to the teacher (*sefu* is a loanword from Chinese *sh\u012bfu*)\n*   **bithe taqimbi**: (I/he/she) study/read books\n\nPutting it together, the sentence describes a daily routine of rising early, going to school, and studying under a teacher.\n\n### Every day, having risen early in the morning, I go to school and study books with the teacher. ###"
+  }
+]

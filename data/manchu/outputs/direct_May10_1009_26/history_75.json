@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\numesi bolho diyan be baime tatame genefi ulha teyebuki\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **umesi**: very, extremely, truly.\n*   **bolho**: a type of official or a specific rank/title (often associated with administrative or clerical duties).\n*   **diyan**: a loanword from Chinese (*di\u00e0n*), meaning a shop, store, or office.\n*   **be**: object marker.\n*   **baime**: from *baimbi* (to seek, to look for, to request).\n*   **tatame**: from *tatambi* (to pull, to draw, to lead, to bring along).\n*   **genefi**: from *genembi* (to go) + *-fi* (conjunctive suffix indicating sequence: \"having gone\").\n*   **ulha**: livestock, cattle, or pack animals.\n*   **teyebuki**: from *tegembi* (to load, to pack, to put on a beast of burden) + *-buki* (a causative or imperative-like construction, often implying \"let it be loaded\" or \"cause to be loaded\").\n\nSynthesizing these, the sentence describes the act of seeking out an official/clerk at an office, bringing them along, and then having the livestock loaded (likely for transport or tax purposes).\n\n### Having sought out the bolho official at the office and brought him along, let the livestock be loaded. ###"
+  }
+]

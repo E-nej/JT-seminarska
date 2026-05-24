@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\ngemu bahanambio bahanarakvn\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"gemu bahanambio bahanarakvn\"**, we must break down the components:\n\n1.  **gemu**: all, entirely, completely.\n2.  **bahanambio**: This is a combination of the verb *bahanambi* (to know, to understand, to be aware of) and the interrogative suffix *-bio* (a question marker indicating uncertainty or a rhetorical inquiry).\n3.  **bahanarakvn**: This is the negative form of the verb *bahanambi* (*bahanara* - the negative participle) plus the interrogative suffix *-kvn* (often used to ask \"is it not?\" or \"do they not?\").\n\nThe sentence is a rhetorical construction often found in classical Manchu texts, essentially asking whether something is known or unknown, or emphasizing that the subject is universally understood (or not).\n\nA literal translation would be: \"Is it all known, or is it not known?\" \n\nIn a more natural, idiomatic context, it conveys the sense of: \"Is it not all known?\" or \"Is it not understood by everyone?\"\n\n### Is it not all known? ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nmeni ama eniye taqi sehe kai\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"meni ama eniye taqi sehe kai\"**, we must break down the components:\n\n*   **meni**: our (genitive case of *muse*, meaning \"we\").\n*   **ama**: father.\n*   **eniye**: mother.\n*   **taqi**: This is a slightly archaic or dialectal form, but it is generally understood as \"to study\" or \"to learn\" (often associated with *taqilambi*).\n*   **sehe**: said (past tense of *sembi*).\n*   **kai**: an emphatic particle used to confirm a statement or express that something is a known fact.\n\nPutting this together, the sentence conveys that \"our parents said [we/one] should study.\"\n\n### Our parents said to study ###"
+  }
+]

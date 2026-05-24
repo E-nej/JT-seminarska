@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbe damu morin be boxome genere de\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"be damu morin be boxome genere de\"**, we must break down the grammatical components:\n\n*   **be**: This is likely a transcription error or a fragment. In Manchu, *be* is the object marker, but it usually follows a noun. If it were meant to be *bi* (I), the sentence would start with \"I\".\n*   **damu**: Only / merely.\n*   **morin**: Horse.\n*   **be**: Object marker (marking *morin* as the object).\n*   **boxome**: From the verb *boxombi* (to lead/lead by the bridle).\n*   **genere**: From the verb *genembi* (to go/take). The *-re* suffix indicates a participle or a conditional/temporal state.\n*   **de**: Locative/dative particle (at/in/when).\n\nSyntactically, this phrase functions as a temporal clause: \"When [I/one] am going while leading only the horse...\"\n\n### When going while leading only the horse ###"
+  }
+]

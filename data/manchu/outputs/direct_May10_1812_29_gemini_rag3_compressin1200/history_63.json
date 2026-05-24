@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nubaqi gemun heqen de isinarangge amba muru sunja tanggv ba funqembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **ubaqi**: from here\n*   **gemun heqen**: the main city / the capital city\n*   **de**: to / towards\n*   **isinarangge**: the act of arriving / that which arrives\n*   **amba muru**: a long distance / a great span\n*   **sunja tanggv**: five hundred\n*   **ba**: place / unit of distance (often used for *li* in Manchu contexts)\n*   **funqembi**: remains / is left over\n\nPutting these together, the sentence describes the distance remaining to reach the destination.\n\n### From here to the main city, there remains a distance of five hundred units ###"
+  }
+]

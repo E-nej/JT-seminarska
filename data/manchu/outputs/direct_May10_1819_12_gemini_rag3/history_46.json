@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nuttu oqi sain kai muse sasari yoki dere\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"uttu oqi sain kai muse sasari yoki dere\"**, we must break down the components:\n\n*   **uttu**: thus, in this way\n*   **oqi**: if it is (conditional form of *ombi*)\n*   **sain**: good\n*   **kai**: an emphatic particle (often translated as \"indeed\" or \"certainly\")\n*   **muse**: we (inclusive)\n*   **sasari**: to know/understand (participle form)\n*   **yoki**: a particle indicating doubt, uncertainty, or a rhetorical question (often \"perhaps\" or \"I wonder\")\n*   **dere**: a modal particle expressing conjecture or probability (\"it seems,\" \"I suppose\")\n\nPutting these together, the sentence carries a sense of reflective agreement: \"If it is thus, it is good indeed; I wonder if we know [it/the situation]?\" or \"If so, it is good; perhaps we understand it, I suppose.\"\n\nGiven the context of Manchu literary style, it is often a way of expressing a tentative agreement or a thoughtful conclusion.\n\n### If it is so, it is good indeed; I suppose we understand it, perhaps. ###"
+  }
+]

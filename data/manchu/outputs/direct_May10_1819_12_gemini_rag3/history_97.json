@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nmorin dobori orho be jeterakv oqi tarhvrakv\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"morin dobori orho be jeterakv oqi tarhvrakv\"**, we must break down the grammar and vocabulary:\n\n*   **morin**: horse\n*   **dobori**: night\n*   **orho**: grass\n*   **be**: (accusative particle)\n*   **jeterakv**: does not eat (negative form of *jembi*, to eat)\n*   **oqi**: if it is (conditional form of *ombi*, to be)\n*   **tarhvrakv**: will not become fat (negative form of *tarhvmbi*, to become fat)\n\nPutting this together, the sentence is a classic Manchu proverb: \"If a horse does not eat grass at night, it will not become fat.\" It is the Manchu equivalent of the English idiom, \"A horse cannot grow fat if it does not graze at night.\"\n\n### If a horse does not eat grass at night, it will not become fat ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nsuweni geren guqu aibiqi aqafi jihe\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"suweni geren guqu aibiqi aqafi jihe\"**, we must break down the components:\n\n*   **suweni**: your (plural)\n*   **geren**: many / all / multitude\n*   **guqu**: friend(s)\n*   **aibiqi**: from where / whence\n*   **aqafi**: having met / having gathered (from the verb *aqambi*)\n*   **jihe**: came (past tense of *jimbi*)\n\nPutting these together, the sentence describes a group of friends gathering from different places to arrive at a destination.\n\n### Where did all of your friends gather from to come here? ###"
+  }
+]

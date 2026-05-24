@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nmuse enenggi dobori aibide dedume genembi\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"muse enenggi dobori aibide dedume genembi\"**, we must break down the components:\n\n*   **muse**: we (inclusive)\n*   **enenggi**: today\n*   **dobori**: night\n*   **aibide**: where (to what place)\n*   **dedume**: while sitting / by sitting (from the verb *dedumbi*, to sit)\n*   **genembi**: are going (from the verb *genembi*, to go)\n\nThe construction *dedume genembi* is a common Manchu idiomatic way of describing travel, implying \"to go by sitting\" (i.e., riding in a carriage, cart, or boat).\n\nPutting it together, the sentence asks about the destination of a journey being taken that night.\n\n### Where are we going to sit and travel to tonight? ###"
+  }
+]

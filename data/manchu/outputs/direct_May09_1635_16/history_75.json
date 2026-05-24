@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\numesi bolho diyan be baime tatame genefi ulha teyebuki\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **umesi**: very, extremely, highly.\n*   **bolho diyan**: This is a loanword from Chinese *b\u014dl\u01d0 di\u00e0n* (\u73bb\u7483\u5e97), meaning \"glass shop.\"\n*   **be**: object marker.\n*   **baime**: from the verb *baimbi* (to seek, to ask for, to beg), here in the converbum imperfectum form (\"seeking\").\n*   **tatame**: from the verb *tatambi* (to pull, to draw, to drag), here in the converbum imperfectum form (\"pulling\").\n*   **genefi**: from the verb *genembi* (to go), here in the converbum perfectum form (\"having gone\").\n*   **ulha**: livestock, cattle, beasts of burden.\n*   **teyebuki**: from the verb *teyembi* (to seat, to place, to mount), with the suffix *-buki* (a desiderative or optative form, \"let us/let one...\").\n\nSynthesizing these, the sentence describes a process of seeking out a glass shop, pulling/drawing (perhaps materials or goods), and then arranging for the livestock.\n\n### Let us go and seek out the glass shop, pull [the goods], and mount the livestock. ###"
+  }
+]

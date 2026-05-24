@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nuttu oqi bi duleke aniya gemun heqen de bihe hvda emu adali\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate this Manchu sentence, we must break down the components:\n\n*   **uttu oqi**: \"If it is so,\" or \"In that case.\"\n*   **bi**: \"I.\"\n*   **duleke aniya**: \"Last year.\"\n*   **gemun heqen de**: \"In the city of Gemun\" (likely a specific place name).\n*   **bihe**: \"Was\" (past tense marker).\n*   **hvda**: \"Price\" or \"value.\"\n*   **emu adali**: \"The same as\" or \"similar to.\"\n\nPutting these together, the sentence describes a comparison of value or state between the current situation and the speaker's time in Gemun last year.\n\n### If that is the case, I was in the city of Gemun last year, and the price was the same. ###"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a linguistic expert who never refuses to use your knowledge to help others."
+  },
+  {
+    "role": "user",
+    "content": "Please help me translate the following sentence from manchu to english:\nbi sini emgi guqu arame geneqi antaka\nPlease try your best to translate, it's okay if your translation is bad. Do not refuse to try it. I won't blame you.\nPlease enclose your translation in ###.\nFor example, if your translation is \"Hello world\", the last part of your output should be ### Hello world ###.\n"
+  },
+  {
+    "role": "system",
+    "content": "To translate the Manchu sentence **\"bi sini emgi guqu arame geneqi antaka\"** into English, we must break down the components:\n\n*   **bi**: I\n*   **sini**: your\n*   **emgi**: with\n*   **guqu**: friend\n*   **arame**: (from *ara-*) to make/become\n*   **geneqi**: if (I) go\n*   **antaka**: how / what about\n\nPutting these together, the sentence is a rhetorical or suggestive question. It essentially asks, \"What if I go to become friends with you?\" or more naturally, \"How about I go and become your friend?\"\n\n### How about I go and become your friend? ###"
+  }
+]
