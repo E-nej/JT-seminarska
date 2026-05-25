@@ -9,9 +9,10 @@ Commands:
 """
 
 import argparse
+import os
 import sys
 
-_DB_URL = "postgresql://raguser:ragpass@localhost:5432/ragdb"
+_DB_URL = os.getenv("RAG_DB_URL", "postgresql://raguser:ragpass@localhost:5432/ragdb")
 
 _INIT_SQL = """
 CREATE EXTENSION IF NOT EXISTS vector;

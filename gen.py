@@ -182,7 +182,7 @@ def run(args):
 
     grammar = "[]" if grammar_fn == "" else open(grammar_fn, 'r').read()
     demo = "" if demo_fn == "" else open(demo_fn, 'r').read()
-    if grammar.endswith('.json'):
+    if grammar_fn.endswith('.json'):
         grammar = json.loads(grammar)
 
     all_stats = []

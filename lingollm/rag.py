@@ -1,10 +1,18 @@
+import os
 import psycopg
 from sentence_transformers import SentenceTransformer
 
-DB_URL = "postgresql://raguser:ragpass@localhost:5432/ragdb"
+DB_URL = os.getenv("RAG_DB_URL", "postgresql://raguser:ragpass@localhost:5432/ragdb")
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
-model = SentenceTransformer(MODEL_NAME)
+_model = None
+
+
+def _get_model() -> SentenceTransformer:
+    global _model
+    if _model is None:
+        _model = SentenceTransformer(MODEL_NAME)
+    return _model
 
 # razdeli slovnico na manjše prekrivajoče se dele
 def chunk_text(text: str, size: int = 1200, overlap: int = 200):
@@ -25,7 +33,7 @@ def ingest_grammar(path: str, language: str):
         text = f.read()
 
     chunks = chunk_text(text)  # slovnico razdeli na chunks
-    embeddings = model.encode(chunks, normalize_embeddings=True)
+    embeddings = _get_model().encode(chunks, normalize_embeddings=True)
 
     with psycopg.connect(DB_URL) as conn:
         with conn.cursor() as cur:
@@ -50,7 +58,7 @@ def ingest_grammar(path: str, language: str):
 
 
 def retrieve_grammar(query: str, language: str, k: int = 3):
-    query_embedding = model.encode(query, normalize_embeddings=True).tolist()  # vhodni stavek pretvori v embedding
+    query_embedding = _get_model().encode(query, normalize_embeddings=True).tolist()  # vhodni stavek pretvori v embedding
 
     with psycopg.connect(DB_URL) as conn:
         with conn.cursor() as cur:

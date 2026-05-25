@@ -1,3 +1,4 @@
+import os
 import shelve
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -130,7 +131,8 @@ class Manchu_VDict(VDict):
 class WolofDict(VDict):
     def __init__(self, filename, initial_words: Optional[List]=None, create_new_dict=False):
         super().__init__(filename, initial_words, create_new_dict)
-        self.vdict = json.load(open("data/wolof/new_Wollof2En.dict.json", "r"))
+        dict_dir = os.path.dirname(os.path.abspath(filename))
+        self.vdict = json.load(open(os.path.join(dict_dir, "new_Wollof2En.dict.json"), "r"))
     
     def match(self, query):
         query = query.lower()
@@ -151,6 +153,7 @@ class Bribri_VDict(VDict):
         super().__init__(filename, initial_words, create_new_dict)
         self.driver = None
         self.wait_time = 0.1
+        self.trace = set()
         
     def dict_match(self, key):
         return self.match(key)
@@ -479,7 +482,13 @@ class Shipibo_VDict(VDict):
         return self.dict_match(key)
         
     def real_match(self, key):
-        fst_outputs = subprocess.check_output('echo '+key+' | flookup morph_shk.fst', shell=True).decode('utf-8').split('\n')
+        proc = subprocess.run(
+            ['flookup', 'morph_shk.fst'],
+            input=key + '\n',
+            capture_output=True,
+            text=True,
+        )
+        fst_outputs = proc.stdout.split('\n')
         res = ""
         for output in fst_outputs:
             if output == '':

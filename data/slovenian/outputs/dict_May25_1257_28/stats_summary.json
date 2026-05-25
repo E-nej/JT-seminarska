@@ -1,0 +1,10 @@
+{
+  "sentences_processed": 100,
+  "start_idx": 0,
+  "total_latency_s": 232.704,
+  "avg_latency_s": 2.327,
+  "total_input_tokens": 84172,
+  "avg_input_tokens": 841.7,
+  "total_output_tokens": 46617,
+  "avg_output_tokens": 466.2
+}

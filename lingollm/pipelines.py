@@ -1,7 +1,6 @@
 from .prompts import (
     prompt_direct_translate,
     prompt_cot_translate,
-    prompt_cot_translate,
     prompt_dict_translate,
     prompt_fewshot_translate,
     prompt_fewshot_solve,
@@ -21,9 +20,8 @@ from .prompts import (
     prompt_direct_solve,
 )
 
-import openai
 import random
-from .consts import OPENAI_API_KEY, DICT_CLASSES
+from .consts import DICT_CLASSES
 
 
 def maybe_compress_messages(messages, sent, use_compression=False, compression_target=1200, llm=None):
@@ -53,8 +51,8 @@ def copy_prompt_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, g
     result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(messages[-1]['content'], boundary="###"), messages
-    
-    
+
+
 def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
@@ -63,7 +61,7 @@ def direct_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss,
     result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
-    
+
 
 def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
     messages = [
@@ -76,27 +74,20 @@ def cot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
 
 
 def direct_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_direct_solve(src_lang, tgt_lang, sent)}
     ]
-    completion = openai.ChatCompletion.create(
-        model=MODEL_CKPT,
-        messages=messages,
-        top_p=0.5,
-    )   
-    result = completion.choices[0].message.content
+    result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
 def zeroshot_cot(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_zeroshot_cot(src_lang, tgt_lang, sent)}
-    ] 
+    ]
     result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
@@ -113,7 +104,6 @@ def fewshot_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss
 
 
 def fewshot_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_fewshot_solve(src_lang, tgt_lang, sent, demo)}
@@ -124,8 +114,6 @@ def fewshot_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
 
 
 def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    #import pdb; pdb.set_trace()
-    openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
     words = sent.split()
@@ -134,7 +122,7 @@ def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, d
     while i < len(words):
         if i + 1 < len(words):
             word = words[i] + " " + words[i + 1]
-            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":   
+            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":
                 wres, key = vdict.match(word)
                 if word == key:
                     wordbyword = wordbyword + word + ": " + wres + "\n"
@@ -143,7 +131,7 @@ def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, d
         wres, key = vdict.match(words[i])
         wordbyword = wordbyword + "### " + words[i] + "\n" + wres + "\n"
         i += 1
-    
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_dict_translate(src_lang, tgt_lang, demo, sent, wordbyword)}
@@ -154,7 +142,6 @@ def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, d
 
 
 def dict_translate_mask(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
     words = sent.split()
@@ -164,7 +151,7 @@ def dict_translate_mask(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glo
     while i < len(words):
         if i + 1 < len(words):
             word = words[i] + " " + words[i + 1]
-            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":   
+            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":
                 wres, key = vdict.match(word)
                 if "; parent: " in wres:
                     wres = wres.split("; parent: ")[0]
@@ -179,88 +166,17 @@ def dict_translate_mask(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glo
                 wres = wres.split("; parent: ")[0]
             wordbyword = wordbyword + words[i] + ": " + wres + "\n"
         i += 1
-    
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_dict_translate(src_lang, tgt_lang, sent, wordbyword)}
-    ]
-    completion = openai.ChatCompletion.create(
-        model=MODEL_CKPT,
-        messages=messages,
-        top_p=0.5,
-    )
-    result = completion.choices[0].message['content']
-    messages.append({"role": "system", "content": result})
-    return extract_enclosed_text(result), messages
-
-
-def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
-    vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
-    vdict = vdict(dict_fn, create_new_dict=False)
-    words = sent.split()
-    wordbyword = ""
-    i = 0
-    while i < len(words):
-        if i + 1 < len(words):
-            word = words[i] + " " + words[i + 1]
-            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":             
-                wres, key = vdict.match(word)
-                if word == key:
-                    wordbyword = wordbyword + word + ": " + wres + "\n"
-                    i += 2
-                    continue
-        wres, key = vdict.match(words[i])
-        wordbyword = wordbyword + words[i] + ": " + wres + "\n"
-        i += 1
-    
-    messages = [
-        {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar)}
-    ]
-
-    messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)  # vzame messages in po potrebi stisne user prompt (messages[1]["content"])
-
-    result = llm(messages)
-    messages.append({"role": "system", "content": result})
-    return extract_enclosed_text(result), messages
-
-
-def wordmap_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
-    vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
-    vdict = vdict(dict_fn, create_new_dict=False)
-    words = sent.split()
-    wordbyword = ""
-    i = 0
-    while i < len(words):
-        subword = words[i].replace('-', ' ')
-        wres = vdict.match(subword)
-        if wres == "" or "Partial match:" in wres:
-            subword = subword.split()
-            for w in subword:
-                wres = vdict.match(w)
-                wordbyword = wordbyword + w + ": " + wres + "\n"
-            for j, _ in enumerate(subword):
-                wres = vdict.match(' '.join(subword[j:]))
-                wordbyword = wordbyword + ' '.join(subword[j:]) + ": " + wres + "\n"
-                j += 1
-        else:
-            wordbyword = wordbyword + words[i] + ": " + wres + "\n"
-        #print(wordbyword)
-        i += 1
-    
-    messages = [
-        {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_dict_translate(src_lang, tgt_lang, sent, wordbyword)}
+        {"role": "user", "content": prompt_dict_translate(src_lang, tgt_lang, demo, sent, wordbyword)}
     ]
     result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
-def gloss_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
+def wordmap_dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
     words = sent.split()
@@ -281,7 +197,38 @@ def gloss_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, gr
         else:
             wordbyword = wordbyword + words[i] + ": " + wres + "\n"
         i += 1
-    
+
+    messages = [
+        {"role": "system", "content": prompt_system(src_lang)},
+        {"role": "user", "content": prompt_dict_translate(src_lang, tgt_lang, demo, sent, wordbyword)}
+    ]
+    result = llm(messages)
+    messages.append({"role": "assistant", "content": result})
+    return extract_enclosed_text(result), messages
+
+
+def gloss_dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
+    vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
+    vdict = vdict(dict_fn, create_new_dict=False)
+    words = sent.split()
+    wordbyword = ""
+    i = 0
+    while i < len(words):
+        subword = words[i].replace('-', ' ')
+        wres = vdict.match(subword)
+        if wres == "" or "Partial match:" in wres:
+            subword = subword.split()
+            for w in subword:
+                wres = vdict.match(w)
+                wordbyword = wordbyword + w + ": " + wres + "\n"
+            for j, _ in enumerate(subword):
+                wres = vdict.match(' '.join(subword[j:]))
+                wordbyword = wordbyword + ' '.join(subword[j:]) + ": " + wres + "\n"
+                j += 1
+        else:
+            wordbyword = wordbyword + words[i] + ": " + wres + "\n"
+        i += 1
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_gloss_dict_translate(src_lang, tgt_lang, sent, gloss, wordbyword)}
@@ -292,7 +239,6 @@ def gloss_dict_translate(llm, src_lang, tgt_lang, sent, dict_fn, gloss, demo, gr
 
 
 def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
     words = sent.split()
@@ -313,7 +259,7 @@ def gloss_dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dic
         else:
             wordbyword = wordbyword + wres + "\n"
         i += 1
-    
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_gloss_dict_grammar_translate(src_lang, tgt_lang, sent, gloss, wordbyword, grammar)}
@@ -362,7 +308,6 @@ def dict_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, 
 
 
 def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
     words = sent.split()
@@ -371,7 +316,7 @@ def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glos
     while i < len(words):
         if i + 1 < len(words):
             word = words[i] + " " + words[i + 1]
-            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":             
+            if word == "tuttu oqi" or word == "uttu oqi" or word == "jetere jaka":
                 wres, key = vdict.match(word)
                 if word == key:
                     wordbyword = wordbyword + word + ": " + wres + "\n"
@@ -380,7 +325,7 @@ def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glos
         wres, key = vdict.match(words[i])
         wordbyword = wordbyword + words[i] + ": " + wres + "\n"
         i += 1
-    
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_dict_grammar_solve(src_lang, tgt_lang, sent, wordbyword, grammar)}
@@ -388,12 +333,7 @@ def dict_grammar_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, glos
 
     messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)
 
-    completion = openai.ChatCompletion.create(
-        model=MODEL_CKPT,
-        messages=messages,
-        top_p=0.5,
-    )
-    result = completion.choices[0].message['content']
+    result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
@@ -419,42 +359,30 @@ def gloss_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, 
 
 
 def gloss_translate_iter(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     assert iter is not None, "Iteration number must be specified"
-    
+
     all_messages = []
-    
-    # first iteration
-    
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_gloss_translate(src_lang, tgt_lang, sent, gloss)}
     ]
-    completion = openai.ChatCompletion.create(
-        model=MODEL_CKPT,
-        messages=messages
-    )   
-    result = completion.choices[0].message['content']
+    result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     translation = extract_enclosed_text(result)
     all_messages.append(messages)
-    
+
     for _ in range(1, iter):
         messages.append({"role": "user", "content": prompt_gloss_translation_iter(src_lang, tgt_lang, sent, gloss, translation)})
-        completion = openai.ChatCompletion.create(
-            model=MODEL_CKPT,
-            messages=messages
-        )   
-        result = completion.choices[0].message['content']
+        result = llm(messages)
         messages.append({"role": "assistant", "content": result})
         translation = extract_enclosed_text(result)
         all_messages.append(messages)
-        
+
     return translation, all_messages
 
 
 def gloss_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_gloss_grammar(src_lang, tgt_lang, sent, gloss, grammar)}
@@ -468,60 +396,44 @@ def gloss_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn,
 
 
 def wordmap_grammar_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
-    openai.api_key = OPENAI_API_KEY
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
-        {"role": "user", "content": prompt_wordmap_grammar(src_lang, tgt_lang, sent, gloss, demo, grammar)}
+        {"role": "user", "content": prompt_wordmap_grammar(src_lang, tgt_lang, sent, gloss, grammar)}
     ]
 
     messages = maybe_compress_messages(messages, sent, use_compression, compression_target, llm)
 
-    completion = openai.ChatCompletion.create(
-        model=MODEL_CKPT,
-        messages=messages
-    )   
-    result = completion.choices[0].message['content']
+    result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     return extract_enclosed_text(result), messages
 
 
-def gloss_grammar_chapter_by_chapter_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
+def gloss_grammar_chapter_by_chapter_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
     assert iter is not None, "Iteration number must be specified"
     assert iter == len(grammar) + 1, "Iteration number must be equal to the number of chapters plus one"
-    openai.api_key = OPENAI_API_KEY
-    
+
     all_messages = []
-    
-    # first iteration
-    
+
     messages = [
         {"role": "system", "content": prompt_system(src_lang)},
         {"role": "user", "content": prompt_gloss_translate(src_lang, tgt_lang, sent, gloss)}
     ]
-    completion = openai.ChatCompletion.create(
-        model=MODEL_CKPT,
-        messages=messages
-    )   
-    result = completion.choices[0].message['content']
+    result = llm(messages)
     messages.append({"role": "assistant", "content": result})
     translation = extract_enclosed_text(result)
     all_messages.append(messages)
-    
+
     for i in range(0, iter - 1):
         messages.append({
             "role": "user",
             "content": prompt_gloss_grammar_iterative(src_lang, tgt_lang, sent, gloss, translation,
                         chapter_name=grammar[i].split("\n")[0],
                         grammar=grammar[i].split("\n", 1)[1])})
-        completion = openai.ChatCompletion.create(
-            model=MODEL_CKPT,
-            messages=messages
-        )   
-        result = completion.choices[0].message['content']
+        result = llm(messages)
         messages.append({"role": "assistant", "content": result})
         translation = extract_enclosed_text(result)
         all_messages.append(messages)
-        
+
     return translation, all_messages
 
 PIPELINES = {
@@ -535,7 +447,7 @@ PIPELINES = {
     "dict_translate_mask": dict_translate_mask,
     "wordmap_dict_translate": wordmap_dict_translate,
     "gloss_dict_translate": gloss_dict_translate,
-    "gloss_dict_grammar_translate" : gloss_dict_grammar_translate,
+    "gloss_dict_grammar_translate": gloss_dict_grammar_translate,
     "copy_prompt_translate": copy_prompt_translate,
     "dict_grammar_translate": dict_grammar_translate,
     "dict_grammar_solve": dict_grammar_solve,
