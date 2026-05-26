@@ -78,7 +78,7 @@ def make_logs(src_lang, tgt_lang, pipeline_name, input_fn, dict_fn, output_dir, 
         'copy_prompt': copy_prompt,
     }
     
-    json.dump(config, open(f'{output_dir}/config.json', 'w'))
+    json.dump(config, open(f'{output_dir}/config.json', 'w', encoding='utf-8'), indent=2)
     
     os.makedirs(f'{output_dir}/code_bak', exist_ok=True)
     
@@ -141,7 +141,7 @@ def _write_summary(output_dir, all_stats, start_idx):
             "avg_ratio": round(sum(c["ratio"] for c in comp_list if c.get("ratio")) / len(comp_list), 3),
         }
 
-    json.dump(summary, open(f'{output_dir}/stats_summary.json', 'w'), indent=2)
+    json.dump(summary, open(f'{output_dir}/stats_summary.json', 'w', encoding='utf-8'), indent=2)
 
 
 def run(args):
@@ -164,7 +164,12 @@ def run(args):
     work_dir = f"data/{work_dir}"
     input_fn = f"{work_dir}/{input_fn}"
     dict_fn = f"{work_dir}/{args.dict_name}"
-    output_dir = f"{work_dir}/outputs/{output_dir}"
+    if args.output_dir is None:
+        output_dir = f"{work_dir}/outputs/{output_dir}"
+    elif os.path.isabs(args.output_dir) or os.path.dirname(args.output_dir):
+        output_dir = args.output_dir
+    else:
+        output_dir = f"{work_dir}/outputs/{args.output_dir}"
     gloss_fn = f"{work_dir}/{args.gloss_fn}"
     demo_fn = f"{work_dir}/{args.demo}"
     grammar_fn = ""
@@ -200,7 +205,7 @@ def run(args):
                     continue
                 history = []
                 if copy_prompt:
-                    with open(f'{work_dir}/outputs/{copy_prompt}/history_{i}.json', 'r') as hf:
+                    with open(f'{work_dir}/outputs/{copy_prompt}/history_{i}.json', 'r', encoding='utf-8') as hf:
                         history = json.load(hf)[:2]
 
                 llm.reset_stats()
@@ -212,15 +217,15 @@ def run(args):
                     raise SystemExit(1)
                 elapsed = time.time() - t0
 
-                with open(f'{output_dir}/output_{i}', 'w') as out:
+                with open(f'{output_dir}/output_{i}', 'w', encoding='utf-8') as out:
                     out.write(res)
-                with open(f'{output_dir}/history_{i}.json', 'w') as out:
+                with open(f'{output_dir}/history_{i}.json', 'w', encoding='utf-8') as out:
                     out.write(json.dumps(messages, indent=2, ensure_ascii=False))
                     out.write('\n')
 
                 stats = _collect_stats(i, elapsed, llm)
                 all_stats.append(stats)
-                with open(f'{output_dir}/stats_{i}.json', 'w') as out:
+                with open(f'{output_dir}/stats_{i}.json', 'w', encoding='utf-8') as out:
                     json.dump(stats, out, indent=2)
                     out.write('\n')
 

@@ -14,7 +14,7 @@ valid_models = [
     "gpt-4o-2024-08-06",
     "mistralai/Mixtral-8x7B-Instruct-v0.1",
     "gpt-4o-mini-2024-07-18",
-    "gemini-3.1-flash-lite-preview",
+    "gemini-3.1-flash-lite",
     "qwen2.5:7b",
 ]
 

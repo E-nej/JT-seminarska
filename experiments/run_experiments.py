@@ -2,6 +2,7 @@ import argparse
 import subprocess
 import shlex
 import os
+import sys
 
 parser = argparse.ArgumentParser(description='Run four Gemini experiment configurations')
 parser.add_argument('--llm', type=str, required=True, help='LLM model id to use')
@@ -16,7 +17,7 @@ parser.add_argument('--extra', type=str, default='', help='Extra args to append 
 args = parser.parse_args()
 
 base_cmd = (
-    'python main.py generate '
+    f'"{sys.executable}" main.py generate '
     f"--src slovenian --tgt english --pipeline dict_translate --work_dir {args.work_dir} "
     f"--input_fn {args.input_fn} --dict_name {args.dict_name} --demo {args.demo} --grammar_fn {args.grammar_fn} "
     f"--llm {args.llm} --count {args.count} "
