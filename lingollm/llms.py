@@ -220,6 +220,13 @@ class GeminiWrapper(LLMWrapper):
                 })
                 return response.text
             except Exception as exc:
+                msg = str(exc)
+                # If model not found / deprecated, fail fast with clearer message
+                if 'NOT_FOUND' in msg or 'no longer available' in msg or 'not found' in msg.lower():
+                    raise RuntimeError(
+                        f"Gemini model '{self.model_id}' not available: {msg}. "
+                        "Update --llm to a currently supported Gemini model (check provider docs)."
+                    ) from exc
                 if attempt == max_attempts:
                     raise RuntimeError(f"Gemini API request failed after {max_attempts} retries: {exc}") from exc
                 print(f"Gemini API error (attempt {attempt}/{max_attempts}), retrying in {backoff_seconds * attempt}s...")
@@ -245,7 +252,7 @@ class OllamaWrapper(LLMWrapper):
                     options={
                         "temperature": 0.0,
                         "top_p": 1.0,
-                        "num_ctx": 8192,  # 8k fits comfortably on your 32GB RAM
+                        "num_ctx": 8192,  # 8k fits comfortably on 32GB RAM
                     }
                 )
                 elapsed = time.time() - t0

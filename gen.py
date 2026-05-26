@@ -23,6 +23,7 @@ parser.add_argument('--iter', default=None, type=int, help='iteration number')
 parser.add_argument('--demo', type=str, default="", help='demo examples', required=False)
 parser.add_argument("--llm", type=str, default="", help="LLM model id", required=True)
 parser.add_argument("--start", type=int, default=0, help="Start from line")
+parser.add_argument("--count", type=int, default=None, help="Number of sentences to process (limit runtime)")
 parser.add_argument("--copy_prompt", type=str, default="", help="the output directory to copy prompts from", required=False)
 parser.add_argument("--use_rag", action="store_true")
 parser.add_argument("--rag_k", type=int, default=3)
@@ -150,6 +151,7 @@ def run(args):
     src_lang = args.src
     tgt_lang = args.tgt
     start = args.start
+    count = args.count
     use_rag = args.use_rag
     rag_k = args.rag_k
     use_compression = args.use_compression
@@ -180,17 +182,19 @@ def run(args):
     pipeline = PIPELINES[pipeline_name]
     llm = get_llm_wrapper(llm_id)
 
-    grammar = "[]" if grammar_fn == "" else open(grammar_fn, 'r').read()
-    demo = "" if demo_fn == "" else open(demo_fn, 'r').read()
+    grammar = "[]" if grammar_fn == "" else open(grammar_fn, 'r', encoding='utf-8').read()
+    demo = "" if demo_fn == "" else open(demo_fn, 'r', encoding='utf-8').read()
     if grammar_fn.endswith('.json'):
         grammar = json.loads(grammar)
 
     all_stats = []
-    with open(input_fn, 'r') as f:
-        with open(gloss_fn, 'r') as g:
+    with open(input_fn, 'r', encoding='utf-8') as f:
+        with open(gloss_fn, 'r', encoding='utf-8') as g:
             for i, (sent, gloss) in tqdm(enumerate(zip(f, g))):
                 if i < start:
                     continue
+                if count is not None and i >= start + count:
+                    break
                 sent = sent.strip()
                 if sent == '':
                     continue
