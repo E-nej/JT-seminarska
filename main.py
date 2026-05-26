@@ -95,6 +95,7 @@ def _add_generate_parser(sub):
     p.add_argument("--copy_prompt", default="",     help="Output dir to copy prompts from")
     p.add_argument("--iter",        default=None, type=int)
     p.add_argument("--start",       default=0,    type=int, help="Resume from sentence N")
+    p.add_argument("--count",       default=None, type=int, help="Process at most this many sentences")
     p.add_argument("--use_rag",     action="store_true")
     p.add_argument("--rag_k",       default=3,    type=int)
     p.add_argument("--use_compression", action="store_true")
