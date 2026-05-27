@@ -47,10 +47,9 @@ def check_dirs(args):
     if not os.path.exists(f'data/{work_dir}/{input_fn}'):
         print(f"Input file data/{work_dir}/{input_fn} does not exist!")
         exit(1)
-    
-    # if not os.path.exists(f'data/{work_dir}/{dict_fn}'):
-    #     print(f"Dictionary data/{work_dir}/{dict_fn} does not exist!")
-    #     exit(1)
+    #if not os.path.exists(f'data/{work_dir}/{dict_fn}'):
+    #    print(f"Dictionary data/{work_dir}/{dict_fn} does not exist!")
+    #    exit(1)
     
     if output_dir is None:
         output_dir = pipeline_name
@@ -230,6 +229,22 @@ def run(args):
                     out.write('\n')
 
     _write_summary(output_dir, all_stats, start)
+
+    if all_stats:
+        n = len(all_stats)
+        total = sum(s["total_latency_s"] for s in all_stats)
+        print(f"\n{'='*40}")
+        print(f"Čas izvajanja ({n} stavkov):")
+        print(f"  Skupaj   : {total:.1f} s")
+        print(f"  Povprečje: {total/n:.2f} s / stavek")
+        input_tok  = [s["total_input_tokens"]  for s in all_stats if s.get("total_input_tokens")]
+        output_tok = [s["total_output_tokens"] for s in all_stats if s.get("total_output_tokens")]
+        if input_tok:
+            print(f"  Avg input tokens : {sum(input_tok)/len(input_tok):.0f}")
+        if output_tok:
+            print(f"  Avg output tokens: {sum(output_tok)/len(output_tok):.0f}")
+        print(f"  (Podrobnosti: {output_dir}/stats_summary.json)")
+        print(f"{'='*40}\n")    
 
     if os.path.exists(dict_fn):
         shutil.copy(dict_fn, f'{output_dir}/code_bak/{dict_fn.split("/")[-1]}')

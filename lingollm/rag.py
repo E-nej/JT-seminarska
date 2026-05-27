@@ -59,21 +59,26 @@ def ingest_grammar(path: str, language: str):
 
 def retrieve_grammar(query: str, language: str, k: int = 3):
     query_embedding = _get_model().encode(query, normalize_embeddings=True).tolist()  # vhodni stavek pretvori v embedding
-
-    with psycopg.connect(DB_URL) as conn:
-        with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT content, 1 - (embedding <=> %s::vector) AS similarity
-                FROM rag_chunks
-                WHERE language = %s
-                ORDER BY embedding <=> %s::vector
-                LIMIT %s
-                """,
-                (query_embedding, language, query_embedding, k)
-            )
-
-            return cur.fetchall()
+    try:
+        with psycopg.connect(DB_URL) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT content, 1 - (embedding <=> %s::vector) AS similarity
+                    FROM rag_chunks
+                    WHERE language = %s
+                    ORDER BY embedding <=> %s::vector
+                    LIMIT %s
+                    """,
+                    (query_embedding, language, query_embedding, k)
+                )
+                return cur.fetchall()
+    except Exception as exc:
+        raise RuntimeError(
+            f"RAG retrieval failed: cannot connect to PostgreSQL at {DB_URL}. "
+            "Make sure the database is running, RAG_DB_URL is set correctly, and the rag_chunks table exists. "
+            f"Original error: {exc}"
+        ) from exc
         
 # vrne besedilo chunkov, pripravljeni za vstavljanje v prompt, združeni z ločilom
 def get_rag_context(query: str, language: str, k: int = 3) -> str:

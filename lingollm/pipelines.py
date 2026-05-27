@@ -114,6 +114,13 @@ def fewshot_solve(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, de
 
 
 def dict_translate(llm, copy_prompt, src_lang, tgt_lang, sent, dict_fn, gloss, demo, grammar, iter=None, use_rag=False, rag_k=3, use_compression=False, compression_target=1200):
+    if use_rag or use_compression:
+        import warnings
+        warnings.warn(
+            "dict_translate ignorira --use_rag in --use_compression. "
+            "Uporabi --pipeline dict_grammar_translate, če hočeš RAG ali kompresijo.",
+            stacklevel=2,
+        )
     vdict = DICT_CLASSES[f"{src_lang}-{tgt_lang}"]
     vdict = vdict(dict_fn, create_new_dict=False)
     words = sent.split()

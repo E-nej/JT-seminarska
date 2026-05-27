@@ -127,6 +127,16 @@ Please figure out what the subject and object of each verb is.
 """
 }
 
+GRAMMAR_PROMPT["slovenian"] = """
+Please first annotate the meaning and grammatical features of each word in the sentence using the grammar book.
+For each noun, please annotate its gender, number, and case.
+For each verb, please annotate its tense, aspect, mood, and voice if applicable.
+For each adjective and adverb, please note how they modify the sentence.
+
+Use the grammar book to decide which form is correct in context.
+After annotating, translate the sentence into English.
+"""
+
 
 def prompt_dict_grammar_translate(src_lang, tgt_lang, sent, wordbyword, grammar, use_rag=False, rag_k=3):
     grammar = get_grammar_context(src_lang, sent, grammar, use_rag, rag_k)
@@ -142,7 +152,7 @@ Note that for some words, they might be derived from a more basic form, we call 
 
 Given the above book and word for word mapping.
 
-{GRAMMAR_PROMPT[src_lang]}
+    {GRAMMAR_PROMPT.get(src_lang, GRAMMAR_PROMPT.get('slovenian', ''))}
 
 After annotation, please translate the sentence into {tgt_lang} and enclose your translation in ###."""
     return prompt
@@ -162,7 +172,7 @@ Note that for some words, they might be derived from a more basic form, we call 
 
 Given the above book and word for word mapping.
 
-{GRAMMAR_PROMPT[src_lang]}
+    {GRAMMAR_PROMPT.get(src_lang, GRAMMAR_PROMPT.get('slovenian', ''))}
 
 After annotation, please translate the sentences into {tgt_lang}.
 
